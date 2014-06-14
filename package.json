@@ -27,6 +27,7 @@
     "glob": "^3.2.9"
   },
   "dependencies": {
-    "mongoose": "~3.8.12"
+    "mongoose": "~3.8.12",
+    "q": "~1.0.1"
   }
 }
