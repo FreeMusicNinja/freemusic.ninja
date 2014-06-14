@@ -1,3 +1,14 @@
 <div>
   {{input type="text" value=search action="query"}}
+  {{#each}}
+    <h3>{{name}}</h3>
+    <ul>
+    {{#if jamendo_url}}
+      <li><a href="{{jamendo_url}}">Jamendo</a></li>
+    {{/if}}
+    {{#if magnatune_url}}
+      <li><a href="{{magnatune_url}}">Magnatune</a></li>
+    {{/if}}
+    </ul>
+  {{/each}}
 </div>
