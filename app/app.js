@@ -9,6 +9,10 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
+DS.RESTAdapter.reopen({
+  namespace: 'api'
+});
+
 loadInitializers(App, 'musicfinder');
 
 export default App;

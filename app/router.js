@@ -5,7 +5,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('artists', {path: '/search'});
+  this.resource('artists');
 });
 
 export default Router;
