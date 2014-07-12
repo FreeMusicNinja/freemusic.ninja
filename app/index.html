@@ -15,10 +15,9 @@
   <body>
     <script>
       window.MusicfinderENV = {{ENV}};
-      window.ENV = {
-        ENABLE_ALL_FEATURES: true
-      };
+      window.EmberENV = window.MusicfinderENV.EmberENV;
     </script>
+    <script src="assets/vendor.js"></script>
     <script src="assets/musicfinder.js"></script>
     <script>
       window.Musicfinder = require('musicfinder/app')['default'].create(MusicfinderENV.APP);

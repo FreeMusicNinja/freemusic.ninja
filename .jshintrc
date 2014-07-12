@@ -2,8 +2,7 @@
   "predef": {
     "document": true,
     "window": true,
-    "MusicfinderENV": true,
-    "DS": true
+    "MusicfinderENV": true
   },
   "browser" : true,
   "boss" : true,
