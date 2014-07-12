@@ -5,8 +5,7 @@
     "jquery": "^1.11.1",
     "qunit": "~1.12.0",
     "ember-qunit": "~0.1.5",
-    "ember": "http://builds.emberjs.com/canary/ember.js",
-    "ember-prod": "http://builds.emberjs.com/canary/ember.prod.js",
+    "ember": "components/ember#canary",
     "ember-data": "1.0.0-beta.8",
     "ember-resolver": "~0.1.1",
     "loader": "stefanpenner/loader.js#1.0.0",
@@ -16,7 +15,7 @@
     "ember-cli-test-loader": "rjackson/ember-cli-test-loader#0.0.2"
   },
   "resolutions": {
-    "ember": "e-tag:183a006a4"
+    "ember": "canary"
   },
   "devDependencies": {
     "bootstrap": "~3.2.0"
