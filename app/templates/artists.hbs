@@ -1,7 +1,10 @@
 <div>
-  <h3>Artist Lookup</h3>
-  <p>Type the name of an artist with Creative Commons-licensed music to find their websites.</p>
-  {{input type="text" value=query action="query"}}
+  <h1>Artist Lookup</h1>
+  <p class="lead">Type the name of an artist with Creative Commons-licensed music to find their websites.</p>
+  <form>
+    {{input type="text" value=query}}
+    <button {{action "query"}}>Look Up</button>
+  </form>
   {{#each results}}
     <h3>{{name}}</h3>
     <ul>
