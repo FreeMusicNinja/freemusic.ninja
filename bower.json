@@ -17,5 +17,8 @@
   },
   "resolutions": {
     "ember": "e-tag:183a006a4"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.2.0"
   }
 }
