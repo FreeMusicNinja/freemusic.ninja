@@ -12,8 +12,16 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>{{#link-to 'index'}}Home{{/link-to}}</li>
-        <li>{{#link-to 'artists'}}Artists{{/link-to}}</li>
+        {{#link-li}}
+          {{#link-to 'index'}}
+            Home
+          {{/link-to}}
+        {{/link-li}}
+        {{#link-li}}
+          {{#link-to 'artists'}}
+            Artists
+          {{/link-to}}
+        {{/link-li}}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
