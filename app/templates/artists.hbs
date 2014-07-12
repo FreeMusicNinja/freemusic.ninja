@@ -1,21 +1,35 @@
 <div>
-  <h1>Artist Lookup</h1>
+  <div class="page-header">
+    <h1>Artist Lookup</h1>
+  </div>
   <p class="lead">Type the name of an artist with Creative Commons-licensed music to find their websites.</p>
-  <form>
-    {{input type="text" value=query}}
-    <button {{action "query"}}>Look Up</button>
-  </form>
+
+  <div class="input-group spacer">
+    {{input type="text" value=query class="form-control" action="query"}}
+    <div class="input-group-btn">
+      <button class="btn btn-default" {{action "query"}}>Look Up</button>
+    </div>
+  </div>
+
   {{#each results}}
-    <h3>{{name}}</h3>
-    <ul>
-    {{#if jamendo_url}}
-      <li><a {{bind-attr href=jamendo_url}}>Jamendo</a></li>
-    {{/if}}
-    {{#if magnatune_url}}
-      <li><a {{bind-attr href=magnatune_url}}>Magnatune</a></li>
-    {{/if}}
-    </ul>
+    <div class="panel panel-default">
+      <div class="panel-heading">{{name}}</div>
+      <div class="list-group">
+      {{#if jamendo_url}}
+        <a {{bind-attr href=jamendo_url}} class="list-group-item">Jamendo</a>
+      {{/if}}
+      {{#if magnatune_url}}
+        <a {{bind-attr href=magnatune_url}} class="list-group-item">Magnatune</a>
+      {{/if}}
+      </div>
+    </div>
   {{else}}
-  <p>No artist found.</p>
+    {{#if name}}
+      <div class="panel panel-default">
+        <div class="panel-body">
+          No artist found.
+        </div>
+      </div>
+    {{/if}}
   {{/each}}
 </div>
