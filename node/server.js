@@ -3,6 +3,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var globSync   = require('glob').sync;
+var path = require('path');
 
 require('./app/db');
 
@@ -17,5 +18,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(express.static(path.resolve('./public')));
 
 routes.forEach(function(route) { route(app); });
