@@ -26,12 +26,5 @@
     "body-parser": "^1.2.0",
     "glob": "^3.2.9",
     "ember-cli-ember-data": "~0.1.0"
-  },
-  "dependencies": {
-    "mongoose": "~3.8.12",
-    "q": "~1.0.1",
-    "querystring": "~0.2.0",
-    "request-promise": "0.0.4",
-    "passport": "~0.2.0"
   }
 }
