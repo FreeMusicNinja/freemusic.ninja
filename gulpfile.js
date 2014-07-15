@@ -17,7 +17,7 @@ gulp.task('server', function () {
 });
 
 gulp.task('ember', function () {
-  ember = spawn('./node_modules/.bin/ember', ['server', '--port=4900', '--proxy-port=3900'], {cwd: 'ember', stdio: 'inherit'});
+  ember = spawn('./node_modules/.bin/ember', ['server', '--port=4900', '--proxy=http://localhost:3900'], {cwd: 'ember', stdio: 'inherit'});
   ember.on('close', function (code) {
     if (code === 8) {
       console.log('Ember error detected, waiting for changes...');
