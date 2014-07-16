@@ -1,1 +1,13 @@
-/node_modules
+node_modules
+
+ember/dist
+ember/tmp
+ember/vendor/*
+ember/.sass-cache
+ember/connect.lock
+ember/coverage/*
+ember/libpeerconnection.log
+npm-debug.log
+testem.log
+
+node/public/
