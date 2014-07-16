@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     node;
 
 
-gulp.task('server', function () {
+gulp.task('node', function () {
   if (node) node.kill();  // Kill server if one is running
   node = spawn('node', ['server.js'], {cwd: 'node', stdio: 'inherit'});
   node.on('close', function (code) {
@@ -27,12 +27,12 @@ gulp.task('ember', function () {
 
 
 gulp.task('default', function () {
-  gulp.run('server');
+  gulp.run('node');
   gulp.run('ember');
 
-  // Reload server if files changed
+  // Reload node if files changed
   gulp.watch(['node/**/*.js'], function () {
-    gulp.run('server');
+    gulp.run('node');
   });
 });
 
