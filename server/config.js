@@ -4,5 +4,5 @@ module.exports = {
   echonest: {
     api_key: process.env.ECHONEST_API_KEY,
   },
-  db: 'mongodb://localhost/musicfinder-dev',
+  db: process.env.MONGOHQ_URL || 'mongodb://localhost/musicfinder-dev',
 };
