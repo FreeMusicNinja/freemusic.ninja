@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 gulp.task('node', function () {
   if (node) node.kill();  // Kill server if one is running
-  node = spawn('node', ['server.js'], {cwd: 'node', stdio: 'inherit'});
+  node = spawn('node', ['server/index.js'], {stdio: 'inherit'});
   node.on('close', function (code) {
     if (code === 8) {
       console.log('Node error detected, waiting for changes...');
@@ -31,7 +31,7 @@ gulp.task('default', function () {
   gulp.run('ember');
 
   // Reload node if files changed
-  gulp.watch(['node/**/*.js'], function () {
+  gulp.watch(['server/**/*.js'], function () {
     gulp.run('node');
   });
 });

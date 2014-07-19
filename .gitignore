@@ -9,5 +9,3 @@ ember/coverage/*
 ember/libpeerconnection.log
 npm-debug.log
 testem.log
-
-node/public/
