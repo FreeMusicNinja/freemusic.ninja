@@ -1,10 +1,12 @@
 /* global require */
 
+require('./config/init')();
+
+var config = require('./config/config');
 var express = require('express');
 var bodyParser = require('body-parser');
 var globSync   = require('glob').sync;
 var path = require('path');
-var config = require('./config/config');
 
 require('./db');
 
