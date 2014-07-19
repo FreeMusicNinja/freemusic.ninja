@@ -4,14 +4,15 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var globSync   = require('glob').sync;
 var path = require('path');
+var config = require('./config/config');
 
 require('./db');
 
 var app = express();
 var routes = globSync('./routes/**/*.js', { cwd: __dirname }).map(require);
 
-app.listen(3900, function() {
-  console.log('Listening on port 3900');
+app.listen(config.port, function() {
+  console.log('Listening on port ' + config.port);
 });
 
 app.use(bodyParser.json());
