@@ -1,4 +1,10 @@
 {
+  "engines": {
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "start": "node server/index.js"
+  },
   "dependencies": {
     "body-parser": "^1.2.0",
     "express": "~4.6.0",
