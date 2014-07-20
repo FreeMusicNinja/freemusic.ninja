@@ -3,7 +3,8 @@
 var gulp = require('gulp'),
     spawn = require('child_process').spawn,
     ember,
-    node;
+    node,
+    installs = [];
 
 var NODE_PORT = 3900,
     EMBER_PORT = 4900;
@@ -31,6 +32,13 @@ gulp.task('ember', function () {
 });
 
 
+gulp.task('install', function () {
+  installs.push(spawn('npm', ['install'], {cwd: 'ember', stdio: 'inherit'}));
+  installs.push(spawn('bower', ['install'], {cwd: 'ember', stdio: 'inherit'}));
+  installs.push(spawn('npm', ['install'], {stdio: 'inherit'}));
+});
+
+
 gulp.task('default', function () {
   gulp.run('node');
   gulp.run('ember');
@@ -46,4 +54,5 @@ gulp.task('default', function () {
 process.on('exit', function() {
     if (node) node.kill();
     if (ember) ember.kill();
+    installs.forEach(function (install) { install.kill(); });
 });
