@@ -35,6 +35,8 @@ To start the Node.js and Ember servers:
 $ gulp
 ```
 
+Now visit http://localhost:4900/ in your browser
+
 [bower]: http://bower.io/
 [ember-cli]: http://ember-cli.com/
 [gulp]: http://gulpjs.com/
