@@ -2,7 +2,7 @@ var Artist = require('mongoose').model('Artist'),
     echonest = require('../utils/echonest');
 
 module.exports = function (app) {
-  app.get('/api/similar', function(req, res) {
+  app.get('/similar', function(req, res) {
     var findFreeArtists = function (artistNames) {
       return Artist.find({name: {$in: artistNames}}).exec();
     };
