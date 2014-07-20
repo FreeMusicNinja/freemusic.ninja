@@ -1,11 +1,23 @@
 Free Music Ninja
 ================
 
+Requirements
+------------
+
+This project requires Node.js.
+
+The following global Node packages are required for development:
+
+- bower
+- ember-cli
+- gulp
+
 Installation
 ------------
 
 ```bash
 $ npm install
+$ gulp install  # Install ember project dependencies
 ```
 
 Running the Server
