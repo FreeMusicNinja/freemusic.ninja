@@ -28,7 +28,27 @@ describe('User Model Unit Tests:', function() {
     });
 
     it('should be able to save without problems', function(done) {
-      user.save(done);
+      user.password.should.equal('password');
+      user.save(function () {
+        user.password.should.not.equal('password');  // Password hashed now
+        done();
+      });
+    });
+
+    it('should return error on incorrect password', function(done) {
+      user.comparePassword('incorrect', function (err, isMatch) {
+        (err === null).should.equal(true);
+        isMatch.should.equal(false);
+        done();
+      });
+    });
+
+    it('should return success on correct password', function(done) {
+      user.comparePassword('password', function (err, isMatch) {
+        (err === null).should.equal(true);
+        isMatch.should.equal(true);
+        done();
+      });
     });
 
     it('should fail to save an existing user again', function(done) {
