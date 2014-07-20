@@ -1,10 +1,9 @@
 /* global require */
 
-var gulp = require('gulp'),
-    spawn = require('child_process').spawn,
-    ember,
-    node,
-    installs = [];
+var gulp = require('gulp');
+var spawn = require('child_process').spawn;
+var ember, node, mocha;
+var installs = [];
 
 var NODE_PORT = 3900,
     EMBER_PORT = 4900;
@@ -39,6 +38,12 @@ gulp.task('install', function () {
 });
 
 
+gulp.task('test', function () {
+  process.env.NODE_ENV = 'test';
+  mocha = spawn('./node_modules/mocha/bin/mocha', ['server/tests', '--require=server/index.js'], {stdio: 'inherit'});
+});
+
+
 gulp.task('default', function () {
   gulp.run('node');
   gulp.run('ember');
@@ -54,5 +59,6 @@ gulp.task('default', function () {
 process.on('exit', function() {
     if (node) node.kill();
     if (ember) ember.kill();
+    if (mocha) mocha.kill();
     installs.forEach(function (install) { install.kill(); });
 });
