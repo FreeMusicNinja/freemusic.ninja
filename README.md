@@ -15,7 +15,7 @@ The following global Node packages are required for development:
 Install the global dependencies like this:
 
 ```bash
-$ npm install -g bower ember-cli gulp
+$ sudo npm install -g bower ember-cli gulp
 ```
 
 Installation
