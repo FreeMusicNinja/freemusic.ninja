@@ -1,7 +1,7 @@
 'use strict';
 
 var request     = require('request-promise'),
-    api_key     = require('../config/config').echonest.api_key,
+    apiKey      = require('../config/config').echonest.apiKey,
     querystring = require('querystring');
 
 var apiPrefix = 'http://developer.echonest.com/api/v4/';
@@ -9,7 +9,11 @@ var apiPrefix = 'http://developer.echonest.com/api/v4/';
 var getSimilar = function (artistName) {
   var uri, apiQuery;
 
-  apiQuery = {api_key: api_key, results: 100, name: artistName};
+  apiQuery = {
+    'api_key': apiKey,
+    'results': 100,
+    'name': artistName,
+  };
   uri = apiPrefix + 'artist/similar?' + querystring.stringify(apiQuery);
 
   return request({

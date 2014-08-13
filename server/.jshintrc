@@ -1,0 +1,34 @@
+{
+    "node": true,
+    "esnext": true,
+    "bitwise": false,
+    "curly": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "quotmark": "single",
+    "undef": true,
+    "unused": "vars",
+    "strict": true,
+    "trailing": true,
+    "smarttabs": false,
+    "predef": [ // Extra globals.
+        "define",
+        "require",
+        "exports",
+        "module",
+        "describe",
+        "before",
+        "beforeEach",
+        "after",
+        "afterEach",
+        "it",
+        "inject",
+        "expect",
+        "spyOn"
+    ],
+    "indent": 2, // Specify indentation spacing
+    "devel": true,
+    "noempty": true
+}

@@ -1,4 +1,4 @@
-/* global require */
+'use strict';
 
 require('./config/init')();
 

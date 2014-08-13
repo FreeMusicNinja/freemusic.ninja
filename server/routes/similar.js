@@ -1,3 +1,5 @@
+'use strict';
+
 var Artist = require('mongoose').model('Artist'),
     echonest = require('../utils/echonest');
 
