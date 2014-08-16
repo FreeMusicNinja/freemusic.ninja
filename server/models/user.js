@@ -2,6 +2,7 @@
 
 var bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 
 var Schema = mongoose.Schema;
 var SALT_WORK_FACTOR = 10;
@@ -10,6 +11,8 @@ var UserSchema = new Schema({
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
 });
+
+UserSchema.plugin(uniqueValidator);
 
 UserSchema.pre('save', function(next) {
   var user = this;

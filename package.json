@@ -15,7 +15,9 @@
     "request-promise": "0.0.4",
     "lodash": "~2.4.1",
     "bcrypt": "~0.7.8",
-    "cors": "~2.4.1"
+    "cors": "~2.4.1",
+    "jjv": "~1.0.0",
+    "mongoose-unique-validator": "~0.3.0"
   },
   "devDependencies": {
     "gulp": "~3.8.6",
