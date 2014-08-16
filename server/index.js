@@ -1,6 +1,7 @@
 'use strict';
 
 var config = require('./config');
+var cors = require('cors');
 var express = require('express');
 var bodyParser = require('body-parser');
 var globSync   = require('glob').sync;
@@ -19,5 +20,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(cors());
 
 routes.forEach(function(route) { route(app); });
