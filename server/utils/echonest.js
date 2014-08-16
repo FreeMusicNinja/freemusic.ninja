@@ -1,7 +1,7 @@
 'use strict';
 
 var request     = require('request-promise'),
-    apiKey      = require('../config/config').echonest.apiKey,
+    apiKey      = require('../config').echonest.apiKey,
     querystring = require('querystring');
 
 var apiPrefix = 'http://developer.echonest.com/api/v4/';

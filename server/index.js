@@ -1,8 +1,6 @@
 'use strict';
 
-require('./config/init')();
-
-var config = require('./config/config');
+var config = require('./config');
 var express = require('express');
 var bodyParser = require('body-parser');
 var globSync   = require('glob').sync;
