@@ -12,7 +12,7 @@ var NODE_PORT = 3900,
 gulp.task('node', function () {
   if (node) node.kill();  // Kill server if one is running
   process.env.PORT = NODE_PORT;
-  node = spawn('node', ['server/index.js'], {stdio: 'inherit'});
+  node = spawn('node', ['node/index.js'], {stdio: 'inherit'});
   node.on('close', function (code) {
     if (code === 8) {
       console.log('Node error detected, waiting for changes...');
@@ -40,7 +40,7 @@ gulp.task('install', function () {
 
 gulp.task('test', function () {
   process.env.NODE_ENV = 'test';
-  mocha = spawn('./node_modules/mocha/bin/mocha', ['server/tests', '--require=server/index.js'], {stdio: 'inherit'});
+  mocha = spawn('./node_modules/mocha/bin/mocha', ['node/tests', '--require=node/index.js'], {stdio: 'inherit'});
 });
 
 
@@ -49,7 +49,7 @@ gulp.task('default', function () {
   gulp.run('ember');
 
   // Reload node if files changed
-  gulp.watch(['server/**/*.js'], function () {
+  gulp.watch(['node/**/*.js'], function () {
     gulp.run('node');
   });
 });
