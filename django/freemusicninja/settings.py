@@ -19,8 +19,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'SECRET KEY')
 
 DEBUG = (os.environ.get('DJANGO_DEBUG', '').lower() != 'false')
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.herokuapp.com').split(':')
 
 
@@ -32,7 +30,6 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
 
     'djangosecure',
 )
@@ -71,12 +68,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'
 
 
 # Security
