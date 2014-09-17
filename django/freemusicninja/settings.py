@@ -53,10 +53,11 @@ ROOT_URLCONF = 'freemusicninja.urls'
 WSGI_APPLICATION = 'freemusicninja.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {'default': dj_database_url.config()}
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgres://postgres:postgres@localhost/freemusicninja'
+    ),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
