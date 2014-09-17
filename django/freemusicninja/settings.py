@@ -18,6 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'SECRET KEY')
 
 DEBUG = (os.environ.get('DJANGO_DEBUG', '').lower() != 'false')
+USE_SSL = (os.environ.get('USE_SSL', '').lower() == 'true')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.herokuapp.com').split(':')
 
@@ -79,6 +80,8 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_FRAME_DENY = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
+
+if USE_SSL:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
