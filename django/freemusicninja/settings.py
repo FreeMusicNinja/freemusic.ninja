@@ -32,6 +32,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 
     'djangosecure',
+
+    'artists',
 )
 
 MIDDLEWARE_CLASSES = (
