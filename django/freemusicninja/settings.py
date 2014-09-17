@@ -22,6 +22,11 @@ USE_SSL = (os.environ.get('USE_SSL', '').lower() == 'true')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.herokuapp.com').split(':')
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:4200',
+    'freemusic.ninja',
+)
+
 
 # Application definition
 
@@ -33,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders',
     'djangosecure',
     'rest_framework',
 
@@ -40,6 +46,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
