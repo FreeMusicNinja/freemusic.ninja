@@ -22,10 +22,12 @@ USE_SSL = (os.environ.get('USE_SSL', '').lower() == 'true')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.herokuapp.com').split(':')
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:4200',
-    'freemusic.ninja',
-)
+if DEBUG:
+    CORS_ORIGIN_ALLOW_ALL = True
+else:
+    CORS_ORIGIN_WHITELIST = (
+        'freemusic.ninja',
+    )
 
 
 # Application definition
