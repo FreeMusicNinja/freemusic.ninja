@@ -11,12 +11,10 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
         'query-params-new': true
       },
-      apiHost: process.env.API_URL,
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      API_NAMESPACE: '',
     }
   };
 
@@ -26,6 +24,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.API_HOST = process.env.API_URL;
   }
 
   if (environment === 'test') {
