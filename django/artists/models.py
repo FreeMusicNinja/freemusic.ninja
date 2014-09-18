@@ -1,12 +1,15 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
 
+from .managers import ArtistManager
+
 
 class Artist(TimeStampedModel):
 
     """Music artist served over the API."""
 
     name = models.CharField(max_length=100, unique=True)
+    objects = ArtistManager()
 
 
 class JamendoArtist(TimeStampedModel):
