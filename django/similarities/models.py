@@ -11,9 +11,11 @@ class GeneralArtist(TimeStampedModel):
     name = models.CharField(max_length=100, unique=True)
     normalized_name = models.CharField(max_length=100, editable=False,
                                        unique=True)
+    similar_artists = models.ManyToManyField(to='artists.Artist', through='Similarity')
 
-    def clean(self):
+    def save(self, **kwargs):
         self.normalized_name = self.name.upper()
+        return super().save(**kwargs)
 
 
 class BaseSimilarity(TimeStampedModel):
@@ -32,7 +34,7 @@ class BaseSimilarity(TimeStampedModel):
 
     cc_artist = models.ForeignKey('artists.Artist', verbose_name="CC artist")
     other_artist = models.ForeignKey(GeneralArtist)
-    weight = models.IntegerField(choices=WEIGHTS)
+    weight = models.IntegerField(choices=WEIGHTS, default=0)
 
 
 class UserSimilarity(BaseSimilarity):
@@ -43,6 +45,9 @@ class UserSimilarity(BaseSimilarity):
 
     class Meta:
         verbose_name_plural = "user similarities"
+        unique_together = (
+            ('user', 'cc_artist', 'other_artist'),
+        )
 
 
 class Similarity(BaseSimilarity):
@@ -51,3 +56,15 @@ class Similarity(BaseSimilarity):
 
     class Meta:
         verbose_name_plural = "similarities"
+        unique_together = (
+            ('cc_artist', 'other_artist'),
+        )
+
+
+def update_similarities(cummulative_similarities):
+    for similarity in cummulative_similarities:
+        weight = (UserSimilarity.objects
+                  .filter(other_artist=similarity.other_artist)
+                  .aggregate(models.Avg('weight')))['weight__avg']
+        similarity.weight = weight
+        similarity.save()

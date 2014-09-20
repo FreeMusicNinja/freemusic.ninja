@@ -30,6 +30,9 @@ else:
     )
 
 
+ECHONEST_API_KEY = os.environ.get('ECHONEST_API_KEY', None)
+
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -45,6 +48,7 @@ INSTALLED_APPS = (
     'rest_framework',
 
     'artists',
+    'echonest',
     'similarities',
     'users',
 )
