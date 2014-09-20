@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'rest_framework',
 
     'artists',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,6 +86,9 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+
+AUTH_USER_MODEL = 'users.User'
 
 
 REST_FRAMEWORK = {
