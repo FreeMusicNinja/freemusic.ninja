@@ -11,6 +11,12 @@ class Artist(TimeStampedModel):
     name = models.CharField(max_length=100, unique=True)
     objects = ArtistManager()
 
+    class Meta:
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
 
 class JamendoArtist(TimeStampedModel):
 
@@ -23,6 +29,12 @@ class JamendoArtist(TimeStampedModel):
     image = models.URLField()
     shorturl = models.URLField()
     shareurl = models.URLField()
+
+    class Meta:
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
 
 
 class MagnatuneArtist(TimeStampedModel):
@@ -37,3 +49,9 @@ class MagnatuneArtist(TimeStampedModel):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
+
+    class Meta:
+        ordering = ('artist',)
+
+    def __str__(self):
+        return self.artist
