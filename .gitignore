@@ -1,5 +1,9 @@
 node_modules
 
+*.py[cod]
+__pycache__
+.coverage
+
 ember/dist
 ember/tmp
 ember/vendor/*

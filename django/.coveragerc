@@ -1,0 +1,8 @@
+[run]
+include = ./*
+branch = 1
+
+
+[report]
+exclude_lines =
+    if __name__ == "__main__":

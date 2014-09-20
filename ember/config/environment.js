@@ -11,25 +11,24 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
         'query-params-new': true
       },
-      apiHost: process.env.API_URL,
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      API_NAMESPACE: '',
     }
   };
 
   if (environment === 'development') {
-    // LOG_MODULE_RESOLVER is needed for pre-1.6.0
-    ENV.LOG_MODULE_RESOLVER = true;
-
-    ENV.APP.LOG_RESOLVER = true;
+    // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_MODULE_RESOLVER = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.API_HOST = process.env.API_URL;
+  }
+
+  if (environment === 'test') {
+
   }
 
   if (environment === 'production') {
