@@ -32,6 +32,7 @@ else:
 
 ECHONEST_API_KEY = os.environ.get('ECHONEST_API_KEY', None)
 JAMENDO_CLIENT_ID = os.environ.get('JAMENDO_CLIENT_ID', None)
+FMA_API_KEY = os.environ.get('FMA_API_KEY', None)
 
 
 # Application definition
@@ -89,7 +90,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 STATIC_URL = '/static/'
 
