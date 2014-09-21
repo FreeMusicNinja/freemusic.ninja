@@ -23,7 +23,7 @@ class JamendoArtist(TimeStampedModel):
     """Music artist data stored from the Jamendo API."""
 
     id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=250)
     website = models.URLField()
     joindate = models.DateField()
     image = models.URLField()
