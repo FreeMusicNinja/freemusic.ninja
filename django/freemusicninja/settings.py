@@ -31,6 +31,7 @@ else:
 
 
 ECHONEST_API_KEY = os.environ.get('ECHONEST_API_KEY', None)
+JAMENDO_CLIENT_ID = os.environ.get('JAMENDO_CLIENT_ID', None)
 
 
 # Application definition
