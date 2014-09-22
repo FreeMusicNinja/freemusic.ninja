@@ -8,10 +8,7 @@ export default Ember.ArrayController.extend({
     this.set('query', this.get('name'));
   }.observes('name'),
   results: function () {
-    var name = this.get('name');
-    return this.get('model').filter(function(item) {
-      return item.get('name').toLowerCase() === name.toLowerCase();
-    });
+    return this.get('model');
   }.property('name', 'model.@each'),
   actions: {
     query: function() {
