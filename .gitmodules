@@ -1,0 +1,3 @@
+[submodule "django/artists/fixtures"]
+	path = django/artists/fixtures
+	url = git@github.com:FreeMusicNinja/artist-fixtures.git
