@@ -56,6 +56,10 @@ class JamendoArtist(TimeStampedModel):
     shorturl = models.URLField()
     shareurl = models.URLField()
 
+    @property
+    def url(self):
+        return self.shareurl
+
     class Meta:
         ordering = ('name',)
 
@@ -75,6 +79,14 @@ class MagnatuneArtist(TimeStampedModel):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
+
+    @property
+    def name(self):
+        return self.artist
+
+    @property
+    def url(self):
+        return "http://magnatune.com/artists/{}/".format(self.homepage)
 
     class Meta:
         ordering = ('artist',)
@@ -112,6 +124,14 @@ class FMAArtist(TimeStampedModel):
     artist_location = models.CharField(max_length=500, null=True)
     tags = jsonfield.JSONField()
     artist_images = jsonfield.JSONField()
+
+    @property
+    def name(self):
+        return self.artist_name
+
+    @property
+    def url(self):
+        return self.artist_url
 
     class Meta:
         ordering = ('artist_name',)
