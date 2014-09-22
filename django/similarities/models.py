@@ -11,7 +11,8 @@ class GeneralArtist(TimeStampedModel):
     name = models.CharField(max_length=100, unique=True)
     normalized_name = models.CharField(max_length=100, editable=False,
                                        unique=True)
-    similar_artists = models.ManyToManyField(to='artists.Artist', through='Similarity')
+    similar_artists = models.ManyToManyField(to='artists.Artist',
+                                             through='Similarity')
 
     def save(self, **kwargs):
         self.normalized_name = self.name.upper()
