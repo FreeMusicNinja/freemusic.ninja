@@ -1,5 +1,6 @@
 from django.db import models
 import jsonfield
+from model_utils import Choices
 from model_utils.models import TimeStampedModel
 
 from .managers import ArtistManager
@@ -17,6 +18,30 @@ class Artist(TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+
+class Hyperlink(TimeStampedModel):
+
+    """Website link for music artist."""
+
+    NAMES = Choices(
+        ('bandcamp', "Bandcamp"),
+        ('jamendo', "Jamendo"),
+        ('magnatune', "Magnatune"),
+        ('fma', "Free Music Archive"),
+        ('homepage', "Homepage"),
+    )
+
+    order = models.IntegerField()
+    artist = models.ForeignKey(Artist, related_name='links')
+    name = models.CharField(max_length=50)
+    url = models.URLField()
+
+    class Meta:
+        ordering = ('order',)
+
+    def __str__(self):
+        return self.url
 
 
 class JamendoArtist(TimeStampedModel):
