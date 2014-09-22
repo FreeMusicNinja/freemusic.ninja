@@ -39,3 +39,9 @@ $ sudo npm install -g bower ember-cli
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+
+[bower]: http://bower.io/
+[ember-cli]: http://ember-cli.com/
+[gulp]: http://gulpjs.com/
+[node.js]: http://nodejs.org/
