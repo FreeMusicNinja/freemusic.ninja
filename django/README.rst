@@ -49,10 +49,10 @@ To start the Django server:
 Now visit http://localhost:3200/ in your browser.
 
 
-.. _python 3: https://www.python.org/downloads/
-.. _postgresql: https://www.python.org/downloads/
-.. _jamendo api: https://developer.jamendo.com/
-.. _the echo nest api: https://developer.echonest.com/
-.. _freemusicarchive api: http://freemusicarchive.org/api/
-.. _secret key: https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-SECRET_KEY
 .. _database url schema: https://github.com/kennethreitz/dj-database-url#url-schema
+.. _freemusicarchive api: http://freemusicarchive.org/api/
+.. _jamendo api: https://developer.jamendo.com/
+.. _postgresql: https://www.python.org/downloads/
+.. _python 3: https://www.python.org/downloads/
+.. _secret key: https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-SECRET_KEY
+.. _the echo nest api: https://developer.echonest.com/
