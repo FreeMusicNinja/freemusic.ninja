@@ -1,8 +1,9 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
 
-from artists.views import ArtistViewSet, SimilarArtistList
+from artists.views import ArtistViewSet
+from similarities.views import SimilarArtistList
 
 router = routers.DefaultRouter()
 router.register(r'artists', ArtistViewSet)
