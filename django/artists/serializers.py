@@ -4,9 +4,12 @@ from artists.models import Artist, Hyperlink
 
 
 class HyperlinkSerializer(serializers.ModelSerializer):
+
+    display_name = serializers.CharField(source='get_name_display')
+
     class Meta:
         model = Hyperlink
-        fields = ('name', 'url')
+        fields = ('id', 'display_name', 'name', 'url')
 
 
 class ArtistSerializer(serializers.ModelSerializer):

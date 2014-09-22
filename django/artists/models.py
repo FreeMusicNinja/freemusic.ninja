@@ -34,7 +34,7 @@ class Hyperlink(TimeStampedModel):
 
     order = models.IntegerField()
     artist = models.ForeignKey(Artist, related_name='links')
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, choices=NAMES)
     url = models.URLField()
 
     class Meta:
