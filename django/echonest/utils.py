@@ -12,7 +12,7 @@ API_URL = Template("http://developer.echonest.com/api/v4/artist/similar"
 
 def get_similar_from_api(name):
     url = API_URL.expand({'name': name})
-    r = requests.get(url)
+    r = requests.get(str(url))
     r.raise_for_status()
     return SimilarResponse.objects.create(name=name, response=r.json())
 

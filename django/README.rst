@@ -63,6 +63,16 @@ To start the Django server:
 Now visit http://localhost:3200/ in your browser.
 
 
+Deployment
+----------
+
+There is a deploy task in the Fabric file.  Unfortunately Fabric currently requires Python 2 so you'll need to install and use it in a Python 2 environment.
+
+.. code-block:: bash
+
+    $ fab deploy
+
+
 .. _database url schema: https://github.com/kennethreitz/dj-database-url#url-schema
 .. _freemusicarchive api: http://freemusicarchive.org/api/
 .. _jamendo api: https://developer.jamendo.com/
