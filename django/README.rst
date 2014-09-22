@@ -33,6 +33,23 @@ This project uses environment variables for configuration.
 5. ``DATABASE_URL``: URL for database connection (see `database URL schema`_)
 
 
+Fixtures
+--------
+
+There are database fixtures for artist data provided in a submodule.
+
+To update the fixtures submodule:
+
+.. code-block:: bash
+
+    $ git submodule update --init
+
+To install the fixture data:
+
+.. code-block:: bash
+
+    $ ./manage.py loaddata artist fmaartist jamendoartist magnatuneartist
+
 
 Running the Server
 ------------------
