@@ -1,4 +1,5 @@
 from rest_framework import generics
+
 from artists.serializers import ArtistSerializer
 from .utils import get_similar
 
