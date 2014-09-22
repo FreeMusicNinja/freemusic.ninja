@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
-from artists.importers.magnatune import import_from_sqlite
+
+from artists.importers import import_from_sqlite
 
 
 class Command(BaseCommand):

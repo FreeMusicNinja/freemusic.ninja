@@ -1,9 +1,9 @@
 from django.core.management.base import BaseCommand
-from artists.importers.jamendo import fetch_from_jamendo
+
+from artists.importers import fetch_from_jamendo
 
 
 class Command(BaseCommand):
-    args = '[sqlite db file]'
     help = "Imports Jamendo artists from Jamendo API"
 
     def handle(self, **options):

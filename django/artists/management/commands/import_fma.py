@@ -1,7 +1,8 @@
 from optparse import make_option
 
 from django.core.management.base import BaseCommand
-from artists.importers.fma import fetch_from_fma
+
+from artists.importers import fetch_from_fma
 
 
 class Command(BaseCommand):
