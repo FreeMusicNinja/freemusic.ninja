@@ -1,0 +1,4 @@
+-r requirements.txt
+
+coverage==3.7.1
+Fabric==1.10.0
