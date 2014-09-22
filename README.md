@@ -1,43 +1,9 @@
 Free Music Ninja
 ================
 
-Requirements
-------------
+The Free Music Ninja website is made up of two separate projects:
 
-This project requires [Node.js][].
+1. A Django-powered API (in the [django][] directory)
+2. An Ember-powered single page app (in the [ember][] directory)
 
-The following global Node packages are required for development:
-
-- [bower][]
-- [ember-cli][]
-- [gulp][]
-
-Install the global dependencies like this:
-
-```bash
-$ sudo npm install -g bower ember-cli gulp
-```
-
-Installation
-------------
-
-```bash
-$ npm install
-$ gulp install  # Install ember project dependencies
-```
-
-Running the Server
-------------------
-
-To start the Node.js and Ember servers:
-
-```bash
-$ gulp
-```
-
-Now visit http://localhost:4900/ in your browser
-
-[bower]: http://bower.io/
-[ember-cli]: http://ember-cli.com/
-[gulp]: http://gulpjs.com/
-[node.js]: http://nodejs.org/
+Please read the README files in each sub-project.

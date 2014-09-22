@@ -2,6 +2,22 @@
 
 This README outlines the details of collaborating on this Ember application.
 
+## Requirements
+
+This project requires [Node.js][].
+
+The following global Node packages are required for development:
+
+* [bower][]
+* [ember-cli][]
+
+Install the global dependencies like this:
+
+```bash
+$ sudo npm install -g bower ember-cli
+```
+
+
 ## Installation
 
 * `git clone` this repository

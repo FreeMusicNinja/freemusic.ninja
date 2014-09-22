@@ -1,0 +1,58 @@
+Free Music Ninja API
+====================
+
+Requirements
+------------
+
+This project requires `Python 3`_ and `PostgreSQL`_.
+
+
+Installation
+------------
+
+First install Python and PostgreSQL:
+
+.. code-block:: bash
+
+    $ sudo apt-get install python3-dev libpq-dev postgresql postgresql-contrib
+
+
+Install Python dependencies (in a virtualenv preferably):
+
+.. code-block:: bash
+
+    $ pip install -r django/requirements.txt
+
+
+Environment Variables
+---------------------
+
+This project uses environment variables for configuration.
+
+1. ``ECHONEST_API_KEY``: Credentials for `The Echo Nest API`_
+2. ``JAMENDO_CLIENT_ID``: Credentials for `Jamendo API`_
+3. ``FMA_API_KEY``: Credentials for `FreeMusicArchive API`_
+4. ``SECRET_KEY``: `Secret key`_ for cryptographic signing
+5. ``DATABASE_URL``: URL for database connection (see `database URL schema`_)
+
+
+
+Running the Server
+------------------
+
+To start the Django server:
+
+.. code-block:: bash
+
+    $ ./django/manage.py runserver
+
+Now visit http://localhost:3200/ in your browser.
+
+
+.. _python 3: https://www.python.org/downloads/
+.. _postgresql: https://www.python.org/downloads/
+.. _jamendo api: https://developer.jamendo.com/
+.. _the echo nest api: https://developer.echonest.com/
+.. _freemusicarchive api: http://freemusicarchive.org/api/
+.. _secret key: https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-SECRET_KEY
+.. _database url schema: https://github.com/kennethreitz/dj-database-url#url-schema
