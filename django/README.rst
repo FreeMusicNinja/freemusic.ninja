@@ -4,24 +4,21 @@ Free Music Ninja API
 Requirements
 ------------
 
-This project requires `Python 3`_ and `PostgreSQL`_.
-
-
-Installation
-------------
-
-First install Python and PostgreSQL:
+This project requires `Python 3`_ and `PostgreSQL`_:
 
 .. code-block:: bash
 
     $ sudo apt-get install python3-dev libpq-dev postgresql postgresql-contrib
 
 
+Installation
+------------
+
 Install Python dependencies (in a virtualenv preferably):
 
 .. code-block:: bash
 
-    $ pip install -r django/requirements.txt
+    $ pip install -r requirements.txt
 
 
 Environment Variables
@@ -44,7 +41,7 @@ To start the Django server:
 
 .. code-block:: bash
 
-    $ ./django/manage.py runserver
+    $ ./manage.py runserver
 
 Now visit http://localhost:3200/ in your browser.
 
