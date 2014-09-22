@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'SECRET KEY')
 DEBUG = (os.environ.get('DJANGO_DEBUG', '').lower() != 'false')
 USE_SSL = (os.environ.get('USE_SSL', '').lower() == 'true')
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.herokuapp.com').split(':')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '.freemusic.ninja').split(':')
 
 if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
