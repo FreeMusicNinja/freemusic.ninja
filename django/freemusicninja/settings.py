@@ -93,6 +93,7 @@ USE_L10N = True
 USE_TZ = False
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT')
 
 
 AUTH_USER_MODEL = 'users.User'
