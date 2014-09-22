@@ -1,0 +1,9 @@
+dependencies:
+  override:
+    - pip3 install -r django/requirements.txt:
+        timeout: 60
+
+test:
+  override:
+    - python3 django/manage.py test:
+        timeout: 60
