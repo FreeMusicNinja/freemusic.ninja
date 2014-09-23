@@ -14,7 +14,7 @@ The following global Node packages are required for development:
 Install the global dependencies like this:
 
 ```bash
-$ sudo npm install -g bower ember-cli
+$ sudo npm install -g bower ember-cli grunt-cli
 ```
 
 
@@ -39,6 +39,21 @@ $ sudo npm install -g bower ember-cli
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+## Deployment
+
+The following environment variables are required to deploy this website to Amazon S3:
+
+* AWS_KEY
+* AWS_SECRET
+
+To build the website:
+
+* `ember build --environment production`
+
+To deploy the website to S3:
+
+* `grunt`
 
 
 [bower]: http://bower.io/
