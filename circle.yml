@@ -6,7 +6,7 @@ dependencies:
   override:
     - pip install -r django/requirements.txt:
         timeout: 60
-    - cd ember && npm install:
+    - cd ember && npm install && bower install:
         timeout: 60
 
 test:
