@@ -27,6 +27,9 @@
     "ember-cli-ic-ajax": "0.1.1",
     "ember-cli-qunit": "0.0.5",
     "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "glob": "^4.0.5",
+    "grunt": "~0.4.5",
+    "grunt-hashres": "~0.4.1",
+    "grunt-aws-s3": "~0.9.3"
   }
 }
