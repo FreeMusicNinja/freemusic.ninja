@@ -1,6 +1,8 @@
 machine:
   python:
     version: 3.4.0
+  node:
+    version: 0.10.28
 
 dependencies:
   override:
