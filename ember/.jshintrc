@@ -3,7 +3,7 @@
     "document": true,
     "window": true,
     "-Promise": true,
-    "MusicfinderENV": true
+    "FreeMusicNinjaENV": true
   },
   "browser" : true,
   "boss" : true,
