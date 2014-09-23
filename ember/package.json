@@ -30,6 +30,7 @@
     "glob": "^4.0.5",
     "grunt": "~0.4.5",
     "grunt-hashres": "~0.4.1",
-    "grunt-aws-s3": "~0.9.3"
+    "grunt-aws-s3": "~0.9.3",
+    "grunt-contrib-compress": "~0.11.0"
   }
 }

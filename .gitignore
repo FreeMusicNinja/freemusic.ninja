@@ -5,6 +5,7 @@ __pycache__
 .coverage
 
 ember/dist
+ember/compressed
 ember/tmp
 ember/vendor/*
 ember/.sass-cache
