@@ -1,13 +1,19 @@
 machine:
   python:
     version: 3.4.0
+  node:
+    version: 0.10.28
 
 dependencies:
   override:
     - pip install -r django/requirements.txt:
         timeout: 60
+    - cd ember && npm install && bower install:
+        timeout: 60
 
 test:
   override:
     - python django/manage.py test:
+        timeout: 60
+    - cd ember && ./node_modules/ember-cli/bin/ember test:
         timeout: 60

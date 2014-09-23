@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 import echonest
 from artists.models import Artist
 from echonest.models import SimilarResponse
@@ -30,5 +32,5 @@ def get_similar(name):
     artist, _ = GeneralArtist.objects.get_or_create(
         normalized_name=name.upper(), defaults={'name': name})
     add_new_similarities(artist)
-    return Artist.objects.filter(similarity__other_artist=artist,
-                                 similarity__weight__gt=0)
+    similar = Q(similarity__other_artist=artist, similarity__weight__gt=0)
+    return Artist.objects.filter(similar).order_by('-similarity__weight')

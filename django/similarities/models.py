@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.conf import settings
 from model_utils import Choices
 from model_utils.models import TimeStampedModel
@@ -17,6 +18,19 @@ class GeneralArtist(TimeStampedModel):
     def save(self, **kwargs):
         self.normalized_name = self.name.upper()
         return super().save(**kwargs)
+
+
+def create_general_artist(instance, created, **kwargs):
+    if created:
+        artist, _ = GeneralArtist.objects.get_or_create(
+            normalized_name=instance.name.upper(),
+            defaults={'name': instance.name},
+        )
+        Similarity.objects.get_or_create(cc_artist=instance,
+                                         other_artist=artist, weight=5)
+
+
+post_save.connect(create_general_artist, 'artists.Artist')
 
 
 class BaseSimilarity(TimeStampedModel):

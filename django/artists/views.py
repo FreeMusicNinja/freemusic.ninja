@@ -1,5 +1,6 @@
 from rest_framework import viewsets, permissions
 
+from similarities.utils import get_similar
 from .models import Artist
 from .serializers import ArtistSerializer
 
@@ -11,8 +12,11 @@ class ArtistViewSet(viewsets.ModelViewSet):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    filter_fields = ('name',)
 
     def get_queryset(self):
-        """Limit results to at most 100."""
-        return super().get_queryset()[:100]
+        name = self.request.GET.get('name', "")
+        if name:
+            qs = get_similar(name)
+        else:
+            qs = super().get_queryset()
+        return qs[:100]

@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>Artist Lookup</h1>
   </div>
-  <p class="lead">Type the name of an artist with Creative Commons-licensed music to find their websites.</p>
+  <p class="lead">Type the name of an artist to find similar artists with Creative Commons-licensed music.</p>
 
   <div class="input-group spacer">
     {{input type="text" value=query class="form-control" action="query"}}
@@ -15,12 +15,9 @@
     <div class="panel panel-default">
       <div class="panel-heading">{{name}}</div>
       <div class="list-group">
-      {{#if jamendo_url}}
-        <a {{bind-attr href=jamendo_url}} class="list-group-item">Jamendo</a>
-      {{/if}}
-      {{#if magnatune_url}}
-        <a {{bind-attr href=magnatune_url}} class="list-group-item">Magnatune</a>
-      {{/if}}
+      {{#each links}}
+        <a {{bind-attr href=url}} class="list-group-item">{{display_name}}</a>
+      {{/each}}
       </div>
     </div>
   {{else}}
