@@ -19,6 +19,7 @@ module.exports = function(grunt) {
           // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
           CacheControl: "max-age=630720000, public",
           Expires: new Date(Date.now() + 63072000000),
+          ContentEncoding: 'gzip',
         },
       },
       production: {
@@ -27,7 +28,7 @@ module.exports = function(grunt) {
         },
         files: [
           {
-            src: 'dist/index.html',
+            src: 'compressed/index.html',
             dest: 'index.html',
             options: {
               params: {
@@ -39,20 +40,30 @@ module.exports = function(grunt) {
           },
           {
             expand: true,
-            cwd: 'dist/assets/',
+            cwd: 'compressed/assets/',
             src: ['**'],
             dest: 'assets/'
-          },
-          {
-            expand: true,
-            cwd: 'dist/fonts/',
-            src: ['**'],
-            dest: 'fonts/'
           },
         ],
 
       },
 
+    },
+
+    compress: {
+      production: {
+        options: {
+          mode: 'gzip',
+        },
+        files: [
+          {
+            expand: true,
+            cwd: "dist/",
+            src: ['**'],
+            dest: 'compressed/',
+          },
+        ],
+      },
     },
 
     hashres: {
@@ -69,8 +80,9 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-aws-s3');
   grunt.loadNpmTasks('grunt-hashres');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   // Default task(s).
-  grunt.registerTask('default', ['hashres','aws_s3']);
+  grunt.registerTask('default', ['hashres', 'compress', 'aws_s3']);
 
 };
