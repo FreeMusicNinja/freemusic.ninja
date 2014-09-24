@@ -17,5 +17,5 @@ test:
         timeout: 60
     - cd ember && ./node_modules/ember-cli/bin/ember test:
         timeout: 60
-    - codecov --token=4568dab7-185c-4039-aa72-00d046a85b75 --dir=django:
+    - cd django && codecov --dir=django:
         timeout: 60
