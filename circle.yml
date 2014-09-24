@@ -6,7 +6,7 @@ machine:
 
 dependencies:
   override:
-    - pip install -r django/dev-requirements.txt codecov:
+    - pip install -U -r django/dev-requirements.txt https://github.com/treyhunner/codecov-python/archive/support-python3.zip:
         timeout: 60
     - cd ember && npm install && bower install:
         timeout: 60
