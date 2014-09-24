@@ -13,7 +13,7 @@ dependencies:
 
 test:
   override:
-    - coverage run django/manage.py test:
+    - cd django && coverage run manage.py test:
         timeout: 60
     - cd ember && ./node_modules/ember-cli/bin/ember test:
         timeout: 60
