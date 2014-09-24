@@ -6,7 +6,7 @@ machine:
 
 dependencies:
   override:
-    - pip install -r django/dev-requirements.txt coveralls:
+    - pip install -r django/dev-requirements.txt codecov:
         timeout: 60
     - cd ember && npm install && bower install:
         timeout: 60
@@ -17,5 +17,5 @@ test:
         timeout: 60
     - cd ember && ./node_modules/ember-cli/bin/ember test:
         timeout: 60
-    - coveralls:
+    - codecov --token=4568dab7-185c-4039-aa72-00d046a85b75:
         timeout: 60
