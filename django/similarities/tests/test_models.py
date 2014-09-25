@@ -4,7 +4,7 @@ from django.test import TestCase as DjangoTestCase
 from mock import patch
 
 from artists.models import Artist
-from . import models
+from .. import models
 
 
 class GeneralArtistModelTest(TestCase):
