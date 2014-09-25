@@ -2,7 +2,7 @@ import datetime
 
 from unittest import TestCase
 
-from . import models
+from .. import models
 
 
 class ArtistModelTest(TestCase):
