@@ -7,8 +7,8 @@
     "test": "test"
   },
   "scripts": {
+    "prepublish": "bower install",
     "start": "ember server",
-    "build": "ember build",
     "test": "ember test"
   },
   "repository": "https://github.com/stefanpenner/ember-cli",
