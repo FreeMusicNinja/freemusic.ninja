@@ -22,7 +22,6 @@ $ sudo npm install -g bower ember-cli grunt-cli
 
 * `git clone` this repository
 * `npm install`
-* `bower install`
 
 ## Running
 
