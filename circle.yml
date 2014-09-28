@@ -6,14 +6,18 @@ machine:
 
 dependencies:
   override:
-    - pip install -r django/requirements.txt:
+    - pip install -U -r django/dev-requirements.txt coveralls https://github.com/codecov/codecov-python/archive/v0.4.2.zip:
         timeout: 60
     - cd ember && npm install && bower install:
         timeout: 60
 
 test:
   override:
-    - python django/manage.py test:
+    - cd django && coverage run manage.py test:
         timeout: 60
     - cd ember && ./node_modules/ember-cli/bin/ember test:
+        timeout: 60
+    - cd django && coveralls:
+        timeout: 60
+    - cd django && codecov --path=django:
         timeout: 60

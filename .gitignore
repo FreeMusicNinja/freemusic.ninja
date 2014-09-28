@@ -3,6 +3,8 @@ node_modules
 *.py[cod]
 __pycache__
 .coverage
+coverage.xml
+htmlcov
 
 ember/dist
 ember/compressed
