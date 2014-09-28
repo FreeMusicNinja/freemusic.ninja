@@ -1,7 +1,7 @@
 /* global require */
 
-var Application = require('musicfinder/app')['default'];
-var Router = require('musicfinder/router')['default'];
+var Application = require('freemusicninja/app')['default'];
+var Router = require('freemusicninja/router')['default'];
 import Ember from 'ember';
 
 export default function startApp(attrs) {

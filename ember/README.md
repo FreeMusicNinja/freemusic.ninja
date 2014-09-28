@@ -1,4 +1,4 @@
-# Musicfinder
+# Free Music Ninja website
 
 This README outlines the details of collaborating on this Ember application.
 
