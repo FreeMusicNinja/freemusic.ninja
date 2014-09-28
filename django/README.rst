@@ -4,7 +4,8 @@ Free Music Ninja API
 .. image:: https://circleci.com/gh/FreeMusicNinja/freemusic.ninja.png?style=badge
     :target: https://circleci.com/gh/FreeMusicNinja/freemusic.ninja
 
-.. image:: https://codecov.io/github/FreeMusicNinja/freemusic.ninja/coverage.svg?branch=add-django-tests :target: https://codecov.io/github/FreeMusicNinja/freemusic.ninja?branch=add-django-tests
+.. image:: https://codecov.io/github/FreeMusicNinja/freemusic.ninja/coverage.svg?branch=master
+    :target: https://codecov.io/github/FreeMusicNinja/freemusic.ninja?branch=master
 
 Requirements
 ------------
