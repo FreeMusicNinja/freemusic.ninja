@@ -23,4 +23,4 @@ class UserViewSet(viewsets.ModelViewSet):
         if pk == 'me' and request.user.is_authenticated():
             return redirect('user-detail', request.user.pk)
         else:
-            return super(UserViewSet, self).retrieve(request, pk)
+            return super().retrieve(request, pk)
