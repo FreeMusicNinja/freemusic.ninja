@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from mock import patch
 
-from . import models
+from .. import models
 
 
 class UserModelTet(TestCase):
