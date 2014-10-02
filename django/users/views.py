@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from rest_framework import viewsets
 
 from .models import User
@@ -16,3 +17,10 @@ class UserViewSet(viewsets.ModelViewSet):
         return (AuthenticatedUserSerializer
                 if self.request.user == self.object
                 else UserSerializer)
+
+    def retrieve(self, request, pk=None):
+        """Retrieve given user or current user if ``pk`` is "me"."""
+        if pk == 'me' and request.user.is_authenticated():
+            return redirect('user-detail', request.user.pk)
+        else:
+            return super(UserViewSet, self).retrieve(request, pk)

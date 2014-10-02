@@ -42,3 +42,18 @@ class UserTest(APITestCase):
             'id': user1.id,
             'name': user1.name,
         })
+
+    def test_me_logged_out(self):
+        url = reverse('user-detail', args=['me'])
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_me_logged_in(self):
+        user = User.objects.create(name="Trey", email="trey@example.com")
+        url = reverse('user-detail', args=['me'])
+        full_user_url = "http://testserver{}".format(
+            reverse('user-detail', args=[user.pk]))
+        self.client.force_authenticate(user=user)
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_302_FOUND)
+        self.assertEqual(response['location'], full_user_url)
