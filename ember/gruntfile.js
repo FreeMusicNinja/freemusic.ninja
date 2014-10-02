@@ -16,9 +16,6 @@ module.exports = function(grunt) {
         secretAccessKey: '<%= aws.AWSSecretKey %>',
         bucket: '<%= aws.bucket %>',
         params: {
-          // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
-          CacheControl: "max-age=630720000, public",
-          Expires: new Date(Date.now() + 63072000000),
           ContentEncoding: 'gzip',
         },
       },
@@ -30,19 +27,22 @@ module.exports = function(grunt) {
           {
             src: 'compressed/index.html',
             dest: 'index.html',
-            options: {
-              params: {
-                // 1 minute cache policy (1000 * 60)
-                CacheControl: "max-age=60000, public",
-                Expires: new Date(Date.now() + 60000),
-              },
+            params: {
+              // 1 minute cache policy (1000 * 60)
+              CacheControl: "max-age=60000, public",
+              Expires: new Date(Date.now() + 60000),
             },
           },
           {
             expand: true,
             cwd: 'compressed/assets/',
             src: ['**'],
-            dest: 'assets/'
+            dest: 'assets/',
+            params: {
+              // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
+              CacheControl: "max-age=630720000, public",
+              Expires: new Date(Date.now() + 63072000000),
+            },
           },
         ],
 
