@@ -64,7 +64,7 @@ To start the Django server:
 
 .. code-block:: bash
 
-    $ ./manage.py runserver
+    $ ./manage.py runserver 3200
 
 Now visit http://localhost:3200/ in your browser.
 
