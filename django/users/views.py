@@ -15,7 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         return (AuthenticatedUserSerializer
-                if self.request.user == self.object
+                if self.request.user == self.get_object()
                 else UserSerializer)
 
     def retrieve(self, request, pk=None):
