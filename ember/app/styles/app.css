@@ -1,1 +1,7 @@
+/* Move content down because of navbar */
+body {
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+
 .spacer  { margin-bottom: 1em; }

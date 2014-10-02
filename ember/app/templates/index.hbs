@@ -1,3 +1,35 @@
-<div>
-  <p>Welcome! Free Music Ninja is designed to help you find Creative Commons-licensed music.</p>
+<div class="jumbotron">
+  <h1>Find Free Music!</h1>
+  <p><strong>This website is currently under active development.</strong></p>
+  <p>Looking for something to do while waiting for Free Music Ninja?  Check out our {{#link-to 'resources'}}resources{{/link-to}} page.</p>
+  <p>{{#link-to 'resources' class='btn btn-primary btn-lg' role='button'}}Check out related resources &raquo;{{/link-to}}</p>
+</div>
+
+<div class="row">
+
+  <div class="col-md-4">
+    <h2>What is this?</h2>
+    <p>We're building a crowd-sourced recommendation platform for Creative Commons music.  We want to help music fans find open-licensed music that fits their musical preferences.</p>
+    <p>We're bootstrapping our website with a few popular Creative Commons music databases and <a href="http://the.echonest.com/">The Echo Nest</a> music recommendation system.</p>
+ </div>
+
+  <div class="col-md-4">
+    <h2>Why is this necessary?</h2>
+    <p>With CC music you can share playlists, remix music, include music in your YouTube videos, and much more.</p>
+    <p>Unfortunately discovering Creative Commons music is difficult.  Music databases and curated music podcasts cannot cater to their entire user base.  We think a recommendation system is the right solution.</p>
+ </div>
+
+  <div class="col-md-4">
+    <h2>How can I help?</h2>
+    <p>This open source service is currently under development.  The back-end is written in <a href="https://www.djangoproject.com/">Django</a> and the front-end is written in <a href="http://emberjs.com/">Ember.js</a>.  We use APIs from <a href="http://magnatune.com/">Magnatune</a>, <a href="https://www.jamendo.com/">Jamendo</a>, <a href="http://freemusicarchive.org/">Free Music Archive</a>, and <a href="http://the.echonest.com/">The Echo Nest</a>.</p>
+    <p>We're developing everything in the open <a href="https://github.com/FreeMusicNinja/freemusic.ninja">on Github</a>.  We welcome your participation.  You can help us develop, document, or test Free Music Ninja.</p>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="text-muted"><small>Want to try out the website even though it's buggy, incomplete, and generally just broken?</small></p>
+    <p>{{#link-to 'artists' class='btn btn-default btn-xs' role='button'}}Take a peak at the in-development website &raquo;{{/link-to}}</p>
+  </div>
 </div>
