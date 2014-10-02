@@ -3,9 +3,11 @@ from django.contrib import admin
 from rest_framework import routers
 
 from artists.views import ArtistViewSet
+from users.views import UserViewSet
 
 router = routers.DefaultRouter()
 router.register(r'artists', ArtistViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
