@@ -20,7 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, pk=None):
         """Retrieve given user or current user if ``pk`` is "me"."""
-        if pk == 'me' and request.user.is_authenticated():
-            return redirect('user-detail', request.user.pk)
-        else:
-            return super().retrieve(request, pk)
+        if pk == 'me':
+            pk = request.user.pk
+            self.kwargs = {'pk': pk}
+        return super().retrieve(request, pk)
