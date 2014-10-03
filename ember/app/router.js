@@ -9,6 +9,7 @@ Router.map(function() {
   this.resource('artists');
   this.resource('resources');
   this.resource('donate');
+  this.route('login');
 });
 
 export default Router;

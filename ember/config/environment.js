@@ -44,5 +44,11 @@ module.exports = function(environment) {
     ENV.APP.API_HOST = 'http://api.freemusic.ninja';
   }
 
+  ENV['simple-auth'] = {
+    authorizer: 'authorizer:django-rest',
+    serverTokenEndpoint: ENV.APP.API_HOST + '/api-token-auth/',
+    crossOriginWhitelist: [ENV.APP.API_HOST],
+  };
+
   return ENV;
 };
