@@ -8,4 +8,11 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       authController.set('content', this.store.find('user', 'me'));
     }
   },
+
+  actions: {
+    sessionAuthenticationSucceeded: function() {
+      var authController = this.controllerFor('auth');
+      authController.set('content', this.store.find('user', 'me'));
+    }
+  }
 });
