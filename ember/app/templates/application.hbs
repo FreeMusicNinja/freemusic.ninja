@@ -29,20 +29,18 @@
         {{/link-li}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        {{#with controllers.auth}}
-          {{#if session.isAuthenticated}}
-            {{#if model}}
-              <li class="navbar-text">Welcome, {{model.name}}</li>
-            {{/if}}
-            <li><a href="" {{ action 'invalidateSession' }}>Logout</a></li>
-          {{else}}
-            {{#link-li}}
-              {{#link-to 'login'}}
-                Login
-              {{/link-to}}
-            {{/link-li}}
+        {{#if session.isAuthenticated}}
+          {{#if userName}}
+            <li class="navbar-text">Welcome, {{userName}}</li>
           {{/if}}
-        {{/with}}
+          <li><a href="" {{ action 'invalidateSession' }}>Logout</a></li>
+        {{else}}
+          {{#link-li}}
+            {{#link-to 'login'}}
+              Login
+            {{/link-to}}
+          {{/link-li}}
+        {{/if}}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
