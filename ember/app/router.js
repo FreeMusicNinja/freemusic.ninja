@@ -1,13 +1,15 @@
 import Ember from 'ember';
+import config from './config/environment';
 
 var Router = Ember.Router.extend({
-  location: FreeMusicNinjaENV.locationType
+  location: config.locationType
 });
 
 Router.map(function() {
   this.resource('artists');
   this.resource('resources');
   this.resource('donate');
+  this.route('login');
 });
 
 export default Router;
