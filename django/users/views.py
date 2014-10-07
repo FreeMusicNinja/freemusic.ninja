@@ -1,4 +1,3 @@
-from django.shortcuts import redirect
 from rest_framework import viewsets
 
 from .models import User
@@ -20,7 +19,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, pk=None):
         """Retrieve given user or current user if ``pk`` is "me"."""
-        if pk == 'me':
+        if pk == 'me' and request.user.is_authenticated():
             pk = request.user.pk
             self.kwargs = {'pk': pk}
         return super().retrieve(request, pk)
