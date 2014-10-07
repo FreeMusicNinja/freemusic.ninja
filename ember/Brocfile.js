@@ -17,8 +17,8 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import('vendor/bootstrap/dist/css/bootstrap.css');
-app.import('vendor/bootstrap/dist/js/bootstrap.js');
-app.import('vendor/ember-data-django-rest-adapter/build/ember-data-django-rest-adapter.js');
+app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+app.import('bower_components/bootstrap/dist/js/bootstrap.js');
+app.import('bower_components/ember-data-django-rest-adapter/build/ember-data-django-rest-adapter.js');
 
 module.exports = app.toTree();

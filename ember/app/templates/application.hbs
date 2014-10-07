@@ -28,6 +28,18 @@
           {{/link-to}}
         {{/link-li}}
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{#if isLoggedIn}}
+          <li class="navbar-text">Welcome, {{userName}}</li>
+          <li><a href="" {{ action 'invalidateSession' }}>Logout</a></li>
+        {{else}}
+          {{#link-li}}
+            {{#link-to 'login'}}
+              Login
+            {{/link-to}}
+          {{/link-li}}
+        {{/if}}
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </div>

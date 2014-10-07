@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    modulePrefix: 'freemusicninja',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -28,12 +29,26 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
+    // Testem prefers this...
+    ENV.baseURL = '/';
+    ENV.locationType = 'auto';
 
+    // keep test console output quieter
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
+
+    ENV.APP.rootElement = '#ember-testing';
   }
 
   if (environment === 'production') {
     ENV.APP.API_HOST = 'http://api.freemusic.ninja';
   }
+
+  ENV['simple-auth'] = {
+    authorizer: 'authorizer:django-rest',
+    serverTokenEndpoint: ENV.APP.API_HOST + '/api-token-auth/',
+    crossOriginWhitelist: [ENV.APP.API_HOST],
+  };
 
   return ENV;
 };

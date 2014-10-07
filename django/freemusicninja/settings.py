@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'djangosecure',
     'rest_framework',
+    'rest_framework.authtoken',
 
     'artists',
     'echonest',
@@ -102,6 +103,10 @@ AUTH_USER_MODEL = 'users.User'
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
 }
 

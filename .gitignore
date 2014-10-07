@@ -9,7 +9,7 @@ htmlcov
 ember/dist
 ember/compressed
 ember/tmp
-ember/vendor/*
+ember/bower_components/*
 ember/.sass-cache
 ember/connect.lock
 ember/coverage/*

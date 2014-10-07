@@ -1,8 +1,10 @@
 from unittest import TestCase
 
+from django.test import TestCase as DjangoTestCase
 from mock import patch
+from rest_framework.authtoken.models import Token
 
-from . import models
+from .. import models
 
 
 class UserModelTet(TestCase):
@@ -48,6 +50,21 @@ class UserModelTet(TestCase):
     def test_is_staff(self):
         self.assertFalse(models.User().is_staff)
         self.assertTrue(models.User(is_admin=True).is_staff)
+
+
+class CreateAuthTokenTest(DjangoTestCase):
+
+    """Tests for User post_save signal."""
+
+    def test_user_created(self):
+        user = models.User.objects.create(email='user@example.com')
+        self.assertEqual(Token.objects.select_related().get().user, user)
+
+    def test_user_modified(self):
+        user = models.User.objects.create(email='user@example.com')
+        Token.objects.all().delete()
+        user.save()
+        self.assertFalse(Token.objects.all().exists())
 
 
 class UserManagerTest(TestCase):

@@ -1,5 +1,7 @@
-from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.db import models
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 
 class UserManager(BaseUserManager):
@@ -65,3 +67,10 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+@receiver(models.signals.post_save, sender=User)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    """Create an auth token for newly created users."""
+    if created:
+        Token.objects.create(user=instance)

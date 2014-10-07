@@ -13,3 +13,7 @@ charset = utf-8
 [*.{py,rst,ini}]
 indent_style = space
 indent_size = 4
+
+# Added for git diff files in vim
+[*.diff]
+trim_trailing_whitespace = false
