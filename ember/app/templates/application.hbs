@@ -29,7 +29,7 @@
         {{/link-li}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        {{#if session.isAuthenticated}}
+        {{#if isLoggedIn}}
           <li class="navbar-text">Welcome, {{userName}}</li>
           <li><a href="" {{ action 'invalidateSession' }}>Logout</a></li>
         {{else}}
