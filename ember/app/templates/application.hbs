@@ -31,7 +31,9 @@
       <ul class="nav navbar-nav navbar-right">
         {{#with controllers.auth}}
           {{#if session.isAuthenticated}}
-            <li class="navbar-text">Welcome, {{model.name}}</li>
+            {{#if model}}
+              <li class="navbar-text">Welcome, {{model.name}}</li>
+            {{/if}}
             <li><a href="" {{ action 'invalidateSession' }}>Logout</a></li>
           {{else}}
             {{#link-li}}
