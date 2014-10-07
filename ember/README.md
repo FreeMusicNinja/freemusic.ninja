@@ -23,6 +23,10 @@ $ sudo npm install -g bower ember-cli grunt-cli
 * `git clone` this repository
 * `npm install`
 
+If you run into trouble, try this magical command and then start over:
+
+  npm clear cache
+
 ## Running
 
 * `ember server`
