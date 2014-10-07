@@ -55,6 +55,22 @@ This project uses environment variables for configuration.
 If you don't want to setup Postgres, set ``DATABASE_URL`` to ``sqlite:///home/your_username/freemusicninja.db``
 
 
+Database Migrations
+-------------------
+
+To initialize or update the database:
+
+.. code-block:: bash
+
+    ./manage.py migrate
+
+To create a new super user:
+
+.. code-block:: bash
+
+    ./manage.py createsuperuser
+
+
 Fixtures
 --------
 
