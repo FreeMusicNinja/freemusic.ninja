@@ -27,6 +27,10 @@ If you run into trouble, try this magical command and then start over:
 
   npm clear cache
 
+## Environment Variables
+
+You'll need to set `API_URL` to `http://localhost:3200`.
+
 ## Running
 
 * `ember server`
