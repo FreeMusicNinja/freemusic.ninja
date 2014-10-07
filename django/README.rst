@@ -52,6 +52,8 @@ This project uses environment variables for configuration.
 4. ``SECRET_KEY``: `Secret key`_ for cryptographic signing
 5. ``DATABASE_URL``: URL for database connection (see `database URL schema`_)
 
+If you don't want to setup Postgres, set ``DATABASE_URL`` to ``sqlite://``
+
 
 Fixtures
 --------
