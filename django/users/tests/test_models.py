@@ -11,18 +11,32 @@ class UserModelTet(TestCase):
 
     """Tests for User model."""
 
-    def test_clean_with_name(self):
+    def test_save_with_name(self):
         name = "My Name"
         user = models.User(name=name)
-        self.assertEqual(user.name, name)
-        user.clean()
-        self.assertEqual(user.name, name)
+        with patch('users.models.User.save_base') as save_base:
+            self.assertEqual(user.name, name)
+            user.save()
+            save_base.assert_called_once_with(
+                update_fields=None,
+                using='default',
+                force_update=False,
+                force_insert=False,
+            )
+            self.assertEqual(user.name, name)
 
-    def test_clean_without_name(self):
+    def test_save_without_name(self):
         user = models.User()
-        self.assertEqual(user.name, "")
-        user.clean()
-        self.assertEqual(user.name, "Anonymous")
+        with patch('users.models.User.save_base') as save_base:
+            self.assertEqual(user.name, "")
+            user.save()
+            save_base.assert_called_once_with(
+                update_fields=None,
+                using='default',
+                force_update=False,
+                force_insert=False,
+            )
+            self.assertEqual(user.name, "Anonymous")
 
     def test_get_full_name(self):
         name = "Full Name"

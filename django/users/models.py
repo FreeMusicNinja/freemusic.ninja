@@ -45,9 +45,10 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
 
-    def clean(self):
+    def save(self, **kwargs):
         if not self.name:
             self.name = "Anonymous"
+        return super().save(**kwargs)
 
     def get_full_name(self):
         return self.name
