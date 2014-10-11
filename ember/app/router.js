@@ -7,8 +7,8 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('artists');
-  this.resource('resources');
-  this.resource('donate');
+  this.route('resources');
+  this.route('donate');
   this.route('login');
 });
 
