@@ -13,8 +13,8 @@ module('Login tests', {
   }
 });
 
-test("user gives good credentials and receives token", function() {
-  expect(3);
+test("user gives good credentials and receives welcome message", function() {
+  expect(2);
   $.mockjax({
     url: "http://api/api-token-auth/",
     contentType: "application/json",
@@ -28,8 +28,8 @@ test("user gives good credentials and receives token", function() {
     contentType: "application/json",
     responseText: {id: 1, name: "Trey Hunner"},
     onAfterComplete: function () {
-      ok(true);
-      ok(find('.navbar-right').text().indexOf("Welcome, Trey Hunner") > -1, "User name was not displayed");
+      var welcomeMessage = find('.navbar-right').text();
+      ok(welcomeMessage.indexOf("Welcome, Trey Hunner") > -1, "User name was not displayed");
     },
   });
 
@@ -37,5 +37,24 @@ test("user gives good credentials and receives token", function() {
     fillIn('#identification', 'trey@treyhunner.com');
     fillIn('#password', 'valid');
     click('[type=submit]');
+  });
+});
+
+test("user gives bad credentials and receives error", function() {
+  expect(1);
+  $.mockjax({
+    url: "http://api/api-token-auth/",
+    status: 400,
+    contentType: "application/json",
+    responseText: {"non_field_errors": ["Unable to login with provided credentials."]},
+  });
+
+  visit('/login').then(function() {
+    fillIn('#identification', 'trey@treyhunner.com');
+    fillIn('#password', 'valid');
+    click('[type=submit]');
+  }).then(function () {
+    var errorMessage = find('.alert-danger').text();
+    ok(errorMessage.indexOf("Email or password invalid.") > -1, "Error message not displayed.");
   });
 });
