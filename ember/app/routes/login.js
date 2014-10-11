@@ -5,6 +5,10 @@ export default Ember.Route.extend({
     controller.set('errorMessage', null);
   },
   actions: {
+    sessionAuthenticationSucceeded: function() {
+      this.controller.set('errorMessage', null);
+      this.target.send('sessionAuthenticationSucceeded', arguments);
+    },
     sessionAuthenticationFailed: function() {
       this.controller.set('errorMessage', "Email or password invalid.");
     },
