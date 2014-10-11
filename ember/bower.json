@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "bootstrap": "~3.2.0",
-    "ember-data-django-rest-adapter": "~1.0.6"
+    "ember-data-django-rest-adapter": "~1.0.6",
+    "jquery-mockjax": "~1.6.0"
   }
 }
