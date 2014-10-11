@@ -5,12 +5,8 @@ export default Ember.Route.extend({
     controller.set('errorMessage', null);
   },
   actions: {
-    sessionAuthenticationSucceeded: function() {
-      this.controller.set('errorMessage', null);
-      this.target.send('sessionAuthenticationSucceeded', arguments);
-    },
     sessionAuthenticationFailed: function() {
-      this.controller.set('errorMessage', "Email or password invalid.");
+      this.controller.set('errorMessage', "Email or password invalid.");  // FIXME this doesn't trigger when navigating to /login
     },
   },
 });
