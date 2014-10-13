@@ -16,9 +16,9 @@ module("Artist recommendation tests", {
 test("no similar artists", function() {
   expect(1);
   $.mockjax({
-    url: 'http://api/api-token-auth/',
+    url: 'http://api/artists?name=Unknown',
     contentType: 'application/json',
-    responseText: {token: 'TOKEN'},
+    responseText: [],
   });
   visit('/artists?name=Unknown').then(function() {
     equal(find('.panel').text().trim(), 'No artist found.', "Empty artist results text not found.");
