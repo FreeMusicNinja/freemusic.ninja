@@ -8,7 +8,7 @@ import pytest
 from .. import models
 
 
-class UserModelTet(TestCase):
+class UserModelTest(TestCase):
 
     """Tests for User model."""
 
