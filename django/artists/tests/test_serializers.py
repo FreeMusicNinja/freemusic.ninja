@@ -1,4 +1,5 @@
 from unittest import TestCase
+import pytest
 
 from ..models import Artist, Hyperlink
 from ..serializers import ArtistSerializer, HyperlinkSerializer
@@ -27,6 +28,7 @@ class ArtistSerializerTest(TestCase):
 
     """Tests for Artist serializer."""
 
+    @pytest.mark.django_db
     def test_no_links(self):
         id_ = 2
         name = "Brad Sucks"
