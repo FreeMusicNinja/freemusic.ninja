@@ -21,4 +21,8 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import('bower_components/ember-data-django-rest-adapter/build/ember-data-django-rest-adapter.js');
 
+if (app.env === 'test') {
+  app.import('bower_components/jquery-mockjax/jquery.mockjax.js');
+}
+
 module.exports = app.toTree();
