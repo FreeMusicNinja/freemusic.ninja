@@ -1,23 +1,13 @@
 machine:
-  python:
-    version: 3.4.0
   node:
     version: 0.10.28
 
 dependencies:
   override:
-    - pip install -U -r django/dev-requirements.txt coveralls codecov==1.1.0:
-        timeout: 60
-    - cd ember && npm install:
+    - npm install:
         timeout: 60
 
 test:
   override:
-    - cd django && py.test:
-        timeout: 60
-    - cd ember && ./node_modules/ember-cli/bin/ember test:
-        timeout: 60
-    - cd django && coveralls:
-        timeout: 60
-    - cd django && codecov:
+    - ./node_modules/ember-cli/bin/ember test:
         timeout: 60
