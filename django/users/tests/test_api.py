@@ -13,8 +13,8 @@ class UserTest(APITestCase):
         user = User.objects.create(name="Trey", email="trey@example.com")
         url = reverse('user-detail', args=[user.pk])
         response = self.client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, {
+        assert response.status_code == status.HTTP_200_OK
+        assert (response.data == {
             'id': user.id,
             'name': user.name,
         })
@@ -24,8 +24,8 @@ class UserTest(APITestCase):
         url = reverse('user-detail', args=[user.pk])
         self.client.force_authenticate(user=user)
         response = self.client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, {
+        assert response.status_code == status.HTTP_200_OK
+        assert (response.data == {
             'id': user.id,
             'name': user.name,
             'email': user.email,
@@ -37,8 +37,8 @@ class UserTest(APITestCase):
         url = reverse('user-detail', args=[user1.pk])
         self.client.force_authenticate(user=user2)
         response = self.client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, {
+        assert response.status_code == status.HTTP_200_OK
+        assert (response.data == {
             'id': user1.id,
             'name': user1.name,
         })
@@ -46,15 +46,15 @@ class UserTest(APITestCase):
     def test_me_logged_out(self):
         url = reverse('user-detail', args=['me'])
         response = self.client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        assert response.status_code == status.HTTP_404_NOT_FOUND
 
     def test_me_logged_in(self):
         user = User.objects.create(name="Trey", email="trey@example.com")
         url = reverse('user-detail', args=['me'])
         self.client.force_authenticate(user=user)
         response = self.client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, {
+        assert response.status_code == status.HTTP_200_OK
+        assert (response.data == {
             'id': user.id,
             'name': user.name,
             'email': user.email,

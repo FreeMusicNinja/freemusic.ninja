@@ -16,7 +16,7 @@ class UserModelTet(TestCase):
         name = "My Name"
         user = models.User(name=name)
         with patch('users.models.User.save_base') as save_base:
-            self.assertEqual(user.name, name)
+            assert user.name == name
             user.save()
             save_base.assert_called_once_with(
                 update_fields=None,
@@ -24,12 +24,12 @@ class UserModelTet(TestCase):
                 force_update=False,
                 force_insert=False,
             )
-            self.assertEqual(user.name, name)
+            assert user.name == name
 
     def test_save_without_name(self):
         user = models.User()
         with patch('users.models.User.save_base') as save_base:
-            self.assertEqual(user.name, "")
+            assert user.name == ""
             user.save()
             save_base.assert_called_once_with(
                 update_fields=None,
@@ -37,7 +37,7 @@ class UserModelTet(TestCase):
                 force_update=False,
                 force_insert=False,
             )
-            self.assertEqual(user.name, "Anonymous")
+            assert user.name == "Anonymous"
 
     def test_get_full_name(self):
         name = "Full Name"
@@ -73,13 +73,13 @@ class CreateAuthTokenTest(DjangoTestCase):
 
     def test_user_created(self):
         user = models.User.objects.create(email='user@example.com')
-        self.assertEqual(Token.objects.select_related().get().user, user)
+        assert Token.objects.select_related().get().user == user
 
     def test_user_modified(self):
         user = models.User.objects.create(email='user@example.com')
         Token.objects.all().delete()
         user.save()
-        self.assertFalse(Token.objects.all().exists())
+        assert not Token.objects.all().exists()
 
 
 class UserManagerTest(TestCase):
