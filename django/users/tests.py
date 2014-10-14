@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from mock import patch
+import pytest
 
 from . import models
 
@@ -12,42 +13,42 @@ class UserModelTet(TestCase):
     def test_clean_with_name(self):
         name = "My Name"
         user = models.User(name=name)
-        self.assertEqual(user.name, name)
+        assert user.name == name
         user.clean()
-        self.assertEqual(user.name, name)
+        assert user.name == name
 
     def test_clean_without_name(self):
         user = models.User()
-        self.assertEqual(user.name, "")
+        assert user.name == ""
         user.clean()
-        self.assertEqual(user.name, "Anonymous")
+        assert user.name == "Anonymous"
 
     def test_get_full_name(self):
         name = "Full Name"
         user = models.User(name=name)
-        self.assertEqual(user.get_full_name(), name)
+        assert user.get_full_name() == name
 
     def test_get_short_name(self):
         name = "Full Name"
         user = models.User(name=name)
-        self.assertEqual(user.get_short_name(), name)
+        assert user.get_short_name() == name
 
     def test_str(self):
         name = "Full Name"
         user = models.User(name=name)
-        self.assertEqual(str(user), name)
+        assert str(user) == name
 
     def test_has_perm(self):
         user = models.User()
-        self.assertTrue(user.has_perm('users.add_user'))
+        assert user.has_perm('users.add_user')
 
     def test_has_module_perms(self):
         user = models.User()
-        self.assertTrue(user.has_module_perms('users'))
+        assert user.has_module_perms('users')
 
     def test_is_staff(self):
-        self.assertFalse(models.User().is_staff)
-        self.assertTrue(models.User(is_admin=True).is_staff)
+        assert not models.User().is_staff
+        assert models.User(is_admin=True).is_staff
 
 
 class UserManagerTest(TestCase):
@@ -70,17 +71,18 @@ class UserManagerTest(TestCase):
 
     def test_create_user_return_value(self):
         user = self.manager.create_user(self.email)
-        self.assertEqual(user, self.user_model())
+        assert user == self.user_model()
 
     def test_create_user_save_called(self):
         user = self.manager.create_user(self.email)
-        self.assertEqual(user, self.user_model())
+        assert user == self.user_model()
         self.user_model().save.assert_called_once_with(
             using=self.manager._db)
 
     def test_create_user_no_email(self):
-        self.assertRaises(ValueError, self.manager.create_user, "")
-        self.assertEqual(self.user_model().save.call_count, 0)
+        with pytest.raises(ValueError):
+            self.manager.create_user("")
+        assert self.user_model().save.call_count == 0
 
     def test_create_user_email_only(self):
         self.manager.create_user(self.email)
@@ -104,7 +106,7 @@ class UserManagerTest(TestCase):
             name="",
             password=self.password,
         )
-        self.assertEqual(user, create_user())
+        assert user == create_user()
 
     def test_create_superuser_with_name(self):
         name = "Full Name"

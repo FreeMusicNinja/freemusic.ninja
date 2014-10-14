@@ -12,7 +12,7 @@ class ArtistModelTest(TestCase):
     def test_str(self):
         name = "Brad Sucks"
         artist = models.Artist(name=name)
-        self.assertEqual(str(artist), name)
+        assert str(artist) == name
 
 
 class HyperlinkModelTest(TestCase):
@@ -22,7 +22,7 @@ class HyperlinkModelTest(TestCase):
     def test_str(self):
         url = "http://example.com"
         link = models.Hyperlink(order=1, name="Jamendo", url=url)
-        self.assertEqual(str(link), url)
+        assert str(link) == url
 
 
 class JamendoArtist(TestCase):
@@ -43,13 +43,13 @@ class JamendoArtist(TestCase):
         )
 
     def test_str(self):
-        self.assertEqual(str(self.artist), self.name)
+        assert str(self.artist) == self.name
 
     def test_name(self):
-        self.assertEqual(self.artist.name, self.name)
+        assert self.artist.name == self.name
 
     def test_url(self):
-        self.assertEqual(self.artist.url, self.url)
+        assert self.artist.url == self.url
 
 
 class MagnatuneArtist(TestCase):
@@ -72,13 +72,13 @@ class MagnatuneArtist(TestCase):
         )
 
     def test_str(self):
-        self.assertEqual(str(self.artist), self.name)
+        assert str(self.artist) == self.name
 
     def test_name(self):
-        self.assertEqual(self.artist.name, self.name)
+        assert self.artist.name == self.name
 
     def test_url(self):
-        self.assertEqual(self.artist.url, self.url)
+        assert self.artist.url == self.url
 
 
 class FMAArtist(TestCase):
@@ -105,10 +105,10 @@ class FMAArtist(TestCase):
         )
 
     def test_str(self):
-        self.assertEqual(str(self.artist), self.name)
+        assert str(self.artist) == self.name
 
     def test_name(self):
-        self.assertEqual(self.artist.name, self.name)
+        assert self.artist.name == self.name
 
     def test_url(self):
-        self.assertEqual(self.artist.url, self.url)
+        assert self.artist.url == self.url

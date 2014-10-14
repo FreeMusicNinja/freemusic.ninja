@@ -15,7 +15,7 @@ class GeneralArtistModelTest(TestCase):
         name = "Brad Sucks"
         artist = models.GeneralArtist(name=name)
         with patch('similarities.models.GeneralArtist.save_base') as save_base:
-            self.assertEqual(artist.normalized_name, "")
+            assert artist.normalized_name == ""
             artist.save()
             save_base.assert_called_once_with(
                 update_fields=None,
@@ -23,7 +23,7 @@ class GeneralArtistModelTest(TestCase):
                 force_update=False,
                 force_insert=False,
             )
-            self.assertEqual(artist.normalized_name, name.upper())
+            assert artist.normalized_name == name.upper()
 
 
 class CreateGeneralArtistTest(DjangoTestCase):
@@ -37,19 +37,19 @@ class CreateGeneralArtistTest(DjangoTestCase):
         artist = Artist.objects.create(name=self.name)
         general_artist = models.GeneralArtist.objects.get()
         similarity = models.Similarity.objects.get()
-        self.assertEqual(general_artist.name, self.name)
-        self.assertEqual(general_artist.normalized_name, self.normalized_name)
-        self.assertEqual(similarity.cc_artist, artist)
-        self.assertEqual(similarity.other_artist, general_artist)
-        self.assertEqual(similarity.weight, 5)
+        assert general_artist.name == self.name
+        assert general_artist.normalized_name == self.normalized_name
+        assert similarity.cc_artist == artist
+        assert similarity.other_artist == general_artist
+        assert similarity.weight == 5
 
     def test_update(self):
         artist = Artist.objects.create(name=self.name)
         models.GeneralArtist.objects.all().delete()
         models.Similarity.objects.all().delete()
         artist.save()
-        self.assertFalse(models.GeneralArtist.objects.exists())
-        self.assertFalse(models.Similarity.objects.exists())
+        assert not models.GeneralArtist.objects.exists()
+        assert not models.Similarity.objects.exists()
 
 
 class BaseSimilarityModelTest(TestCase):
@@ -57,7 +57,7 @@ class BaseSimilarityModelTest(TestCase):
     """Tests for BaseSimilarity model."""
 
     def test_weights(self):
-        self.assertEqual(list(models.BaseSimilarity.WEIGHTS), [
+        assert (list(models.BaseSimilarity.WEIGHTS) == [
             (0, 'dissimilar (these artists are not similar at all)'),
             (1, "slightly similar (they're not completely different)"),
             (2, 'fairly similar (some elements of the music sound similar)'),
@@ -67,4 +67,4 @@ class BaseSimilarityModelTest(TestCase):
         ])
 
     def test_default_weight(self):
-        self.assertEqual(models.BaseSimilarity().weight, 0)
+        assert models.BaseSimilarity().weight == 0

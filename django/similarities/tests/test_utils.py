@@ -2,6 +2,7 @@ from unittest import TestCase
 from django.test import TestCase as DjangoTestCase
 
 from mock import patch, call
+import pytest
 
 from artists.models import Artist
 from echonest.models import SimilarResponse
@@ -19,14 +20,14 @@ class HasSimilaritiesAlreadyTest(DjangoTestCase):
         normalized_name = name.upper()
         artist = GeneralArtist(name=name, normalized_name=normalized_name)
         SimilarResponse.objects.create(name=name)
-        self.assertTrue(utils.has_similarities(artist))
+        assert utils.has_similarities(artist)
 
     def test_without_similarities(self):
         name = "Brad Sucks"
         normalized_name = name.upper()
         artist = GeneralArtist(name=name, normalized_name=normalized_name)
         SimilarResponse.objects.create(name="Cletus Got Shot")
-        self.assertFalse(utils.has_similarities(artist))
+        assert not utils.has_similarities(artist)
 
 
 class MakeSimilarityTest(DjangoTestCase):
@@ -40,14 +41,14 @@ class MakeSimilarityTest(DjangoTestCase):
         cc_artist = Artist.objects.create(name=name)
         similarity = utils.make_similarity(user, other_artist, cc_artist)
         user_similarity = UserSimilarity.objects.get()
-        self.assertEqual(similarity.other_artist, other_artist)
-        self.assertEqual(similarity.cc_artist, cc_artist)
-        self.assertEqual(similarity.weight, 5)
-        self.assertEqual(user_similarity.other_artist, other_artist)
-        self.assertEqual(user_similarity.cc_artist, cc_artist)
-        self.assertEqual(user_similarity.weight, 1)
-        self.assertEqual(user_similarity.user, user)
-        self.assertEqual(similarity, Similarity.objects.get())
+        assert similarity.other_artist == other_artist
+        assert similarity.cc_artist == cc_artist
+        assert similarity.weight == 5
+        assert user_similarity.other_artist == other_artist
+        assert user_similarity.cc_artist == cc_artist
+        assert user_similarity.weight == 1
+        assert user_similarity.user == user
+        assert similarity == Similarity.objects.get()
 
     def test_no_similarity_exists(self):
         user = User.objects.get(email='echonest')
@@ -55,17 +56,17 @@ class MakeSimilarityTest(DjangoTestCase):
         cc_artist = Artist.objects.create(name="Brad Sucks")
         similarity = utils.make_similarity(user, other_artist, cc_artist)
         user_similarity = UserSimilarity.objects.get()
-        self.assertEqual(similarity.other_artist, other_artist)
-        self.assertEqual(similarity.cc_artist, cc_artist)
-        self.assertEqual(similarity.weight, 0)
-        self.assertEqual(user_similarity.other_artist, other_artist)
-        self.assertEqual(user_similarity.cc_artist, cc_artist)
-        self.assertEqual(user_similarity.weight, 1)
-        self.assertEqual(user_similarity.user, user)
-        self.assertEqual(similarity,
-                         Similarity.objects.get(other_artist=other_artist))
+        assert similarity.other_artist == other_artist
+        assert similarity.cc_artist == cc_artist
+        assert similarity.weight == 0
+        assert user_similarity.other_artist == other_artist
+        assert user_similarity.cc_artist == cc_artist
+        assert user_similarity.weight == 1
+        assert user_similarity.user == user
+        assert similarity == Similarity.objects.get(other_artist=other_artist)
 
 
+@pytest.mark.django_db
 class GetSimilarTest(DjangoTestCase):
 
     """Tests for get_similar."""
@@ -130,7 +131,7 @@ class GetSimilarTest(DjangoTestCase):
         general_artist = GeneralArtist.objects.get()
         utils.get_similar(self.name)
         self.has_similarities.assert_called_once_with(general_artist)
-        self.assertEqual(len(self.add_new_similarities.mock_calls), 0)
+        assert len(self.add_new_similarities.mock_calls) == 0
 
     def test_no_similarities_yet(self):
         """Test add_new_similarities not called if has_similarities is False."""
@@ -141,6 +142,7 @@ class GetSimilarTest(DjangoTestCase):
         self.add_new_similarities.assert_called_once_with(general_artist)
 
 
+@pytest.mark.django_db
 class AddNewSimilaritiesTest(TestCase):
 
     """Tests for add_new_similarities."""
@@ -164,10 +166,10 @@ class AddNewSimilaritiesTest(TestCase):
         self.echonest.get_similar.return_value = []
         utils.add_new_similarities(artist)
         self.echonest.get_similar.assert_called_once_with(artist.name)
-        self.assertEqual(len(self.update_similarities.mock_calls), 1)
+        assert len(self.update_similarities.mock_calls) == 1
         args = list(self.update_similarities.call_args[0][0])
-        self.assertEqual(args, [])
-        self.assertEqual(len(self.make_similarity.mock_calls), 0)
+        assert args == []
+        assert len(self.make_similarity.mock_calls) == 0
 
     def test_two_artists(self):
         names = ["Brad Sucks", "Heifervescent"]
@@ -178,10 +180,8 @@ class AddNewSimilaritiesTest(TestCase):
         self.echonest.get_similar.return_value = names
         utils.add_new_similarities(artist)
         self.echonest.get_similar.assert_called_once_with(artist.name)
-        self.assertEqual(len(self.update_similarities.mock_calls), 1)
+        assert len(self.update_similarities.mock_calls) == 1
         args = list(self.update_similarities.call_args[0][0])
-        self.assertEqual(args, artists)
-        self.assertEqual(
-            self.make_similarity.mock_calls,
-            [call(user, artist, artists[0]), call(user, artist, artists[1])],
-        )
+        assert args == artists
+        assert (self.make_similarity.mock_calls ==
+                [call(user, artist, artists[i]) for i in (0, 1)])
