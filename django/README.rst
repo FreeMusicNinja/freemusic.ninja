@@ -20,11 +20,25 @@ This project requires `Python 3`_ and `PostgreSQL`_:
 Installation
 ------------
 
+First, setup a Python 3 virtual environment.  The simple way:
+
+.. code-block:: bash
+
+    $ virtualenv -p $(which python3) ../../venv
+    $ . ../../venv/bin/activate
+
 Install Python dependencies (in a virtualenv preferably):
 
 .. code-block:: bash
 
     $ pip install -r requirements.txt
+
+
+Every time you use the ``manage.py`` server you'll need to make sure you're in the virtual environment:
+
+.. code-block:: bash
+
+    $ . ../../venv/bin/activate
 
 
 Environment Variables
@@ -37,6 +51,24 @@ This project uses environment variables for configuration.
 3. ``FMA_API_KEY``: Credentials for `FreeMusicArchive API`_
 4. ``SECRET_KEY``: `Secret key`_ for cryptographic signing
 5. ``DATABASE_URL``: URL for database connection (see `database URL schema`_)
+
+If you don't want to setup Postgres, set ``DATABASE_URL`` to ``sqlite:///freemusicninja.db``
+
+
+Database Migrations
+-------------------
+
+To initialize or update the database:
+
+.. code-block:: bash
+
+    ./manage.py migrate
+
+To create a new super user:
+
+.. code-block:: bash
+
+    ./manage.py createsuperuser
 
 
 Fixtures
