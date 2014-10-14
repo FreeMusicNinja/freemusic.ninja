@@ -19,5 +19,5 @@ test:
         timeout: 60
     - cd django && coveralls:
         timeout: 60
-    - cd django && codecov --path=django:
+    - cd django && codecov:
         timeout: 60
