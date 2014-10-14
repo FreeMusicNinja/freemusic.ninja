@@ -13,7 +13,7 @@ class SimilarResponseModelTest(TestCase):
         name = "Brad Sucks"
         similar_response = SimilarResponse(name=name)
         with patch('echonest.models.SimilarResponse.save_base') as save_base:
-            self.assertEqual(similar_response.normalized_name, "")
+            assert similar_response.normalized_name == ""
             similar_response.save()
             save_base.assert_called_once_with(
                 update_fields=None,
@@ -21,9 +21,9 @@ class SimilarResponseModelTest(TestCase):
                 force_update=False,
                 force_insert=False,
             )
-            self.assertEqual(similar_response.normalized_name, name.upper())
+            assert similar_response.normalized_name == name.upper()
 
     def test_artist_names(self):
         response = {'response': {'artists': [{'name': "Brad Sucks"}]}}
         similar_response = SimilarResponse(response=json.dumps(response))
-        self.assertEqual(similar_response.artist_names, ["Brad Sucks"])
+        assert similar_response.artist_names == ["Brad Sucks"]
