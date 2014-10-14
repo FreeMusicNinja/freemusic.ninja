@@ -1,7 +1,7 @@
 from unittest import TestCase
+from unittest.mock import patch
 
 from django.test import TestCase as DjangoTestCase
-from mock import patch
 from rest_framework.authtoken.models import Token
 
 from .. import models
