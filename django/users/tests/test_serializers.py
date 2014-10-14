@@ -14,7 +14,7 @@ class AuthenticatedUserSerializerTest(TestCase):
         email = "user@example.com"
         user = User(id=id_, name=name, email=email)
         serializer = AuthenticatedUserSerializer(user)
-        self.assertEqual(serializer.data, {
+        assert (serializer.data == {
             'id': 4,
             'name': name,
             'email': email,
@@ -31,7 +31,7 @@ class UserSerializerTest(TestCase):
         email = "user@example.com"
         user = User(id=id_, name=name, email=email)
         serializer = UserSerializer(user)
-        self.assertEqual(serializer.data, {
+        assert (serializer.data == {
             'id': 4,
             'name': name,
         })

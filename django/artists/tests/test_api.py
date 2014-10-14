@@ -36,8 +36,8 @@ class ArtistTest(APITestCase):
         )
         data = {'name': "They Might Be Giants"}
         response = self.client.get(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, [
+        assert response.status_code == status.HTTP_200_OK
+        assert (response.data == [
             {'id': a.id, 'name': a.name, 'links': list(a.links.all())}
             for a in artists
         ])
@@ -46,8 +46,8 @@ class ArtistTest(APITestCase):
         artist = Artist.objects.create(name="Brad Sucks")
         url = reverse('artist-detail', args=[artist.id])
         response = self.client.get(url, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, {
+        assert response.status_code == status.HTTP_200_OK
+        assert (response.data == {
             'id': artist.id,
             'name': artist.name,
             'links': list(artist.links.all()),
