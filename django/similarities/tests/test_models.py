@@ -1,7 +1,7 @@
 from unittest import TestCase
-from django.test import TestCase as DjangoTestCase
+from unittest.mock import patch
 
-from mock import patch
+from django.test import TestCase as DjangoTestCase
 
 from artists.models import Artist
 from .. import models

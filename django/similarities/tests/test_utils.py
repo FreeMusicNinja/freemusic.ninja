@@ -1,7 +1,7 @@
 from unittest import TestCase
-from django.test import TestCase as DjangoTestCase
+from unittest.mock import patch, call
 
-from mock import patch, call
+from django.test import TestCase as DjangoTestCase
 
 from artists.models import Artist
 from echonest.models import SimilarResponse
