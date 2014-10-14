@@ -2,15 +2,12 @@ from unittest import TestCase
 from django.test import TestCase as DjangoTestCase
 
 from mock import patch, call
-import pytest
 
 from artists.models import Artist
 from echonest.models import SimilarResponse
 from users.models import User
 from ..models import GeneralArtist, Similarity, UserSimilarity
 from .. import utils
-
-pytestmark = pytest.mark.django_db
 
 
 class HasSimilaritiesAlreadyTest(DjangoTestCase):
