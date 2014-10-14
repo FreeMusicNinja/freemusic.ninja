@@ -44,7 +44,7 @@ Here's how to setup the Free Music Ninja website for local development:
 
 1. Fork the repository on GitHub with the "Fork" button and clone it locally.  `Fork instructions`_.
 
-2. Follow the Django and Ember setup instructions in the README files.
+2. Follow the setup instructions in the README file.
 
 3. Create a branch for development of your bug/feature/improvement:
 
