@@ -1,5 +1,7 @@
 # Free Music Ninja website
 
+[![Circle CI](https://circleci.com/gh/FreeMusicNinja/freemusic.ninja.png?style=badge)](https://circleci.com/gh/FreeMusicNinja/freemusic.ninja)
+
 This README outlines the details of collaborating on this Ember application.
 
 ## Requirements
