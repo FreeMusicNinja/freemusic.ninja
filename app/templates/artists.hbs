@@ -7,7 +7,12 @@
   <div class="input-group spacer">
     {{input type="text" value=query class="form-control" action="query"}}
     <div class="input-group-btn">
-      <button class="btn btn-default" {{action "query"}}>Look Up</button>
+      <button class="btn btn-default" {{action "query"}}>
+        {{#if loading}}
+          <span class="loading glyphicon glyphicon-refresh spin"></span>
+        {{/if}}
+        Look up
+      </button>
     </div>
   </div>
 
@@ -21,12 +26,18 @@
       </div>
     </div>
   {{else}}
-    {{#if name}}
-      <div class="panel panel-default">
-        <div class="panel-body">
-          No artist found.
+    {{#if loading}}
+    <div class="well">
+      Loading...
+    </div>
+    {{else}}
+      {{#if name}}
+        <div class="panel panel-default">
+          <div class="panel-body">
+            No artist found.
+          </div>
         </div>
-      </div>
+      {{/if}}
     {{/if}}
   {{/each}}
 </div>

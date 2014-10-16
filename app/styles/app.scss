@@ -1,3 +1,5 @@
+@import "mixins";
+
 /* Move content down because of navbar */
 body {
   padding-top: 70px;
@@ -5,3 +7,12 @@ body {
 }
 
 .spacer  { margin-bottom: 1em; }
+
+.spin {
+  @include animation(spin .8s infinite linear);
+}
+
+@include keyframes(spin) {
+  from { transform: rotate(0deg);}
+  to { transform: rotate(360deg);}
+}
