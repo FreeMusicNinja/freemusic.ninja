@@ -16,7 +16,7 @@
     "ember-simple-auth": "0.6.7"
   },
   "devDependencies": {
-    "bootstrap-sass-official": "~3.2.0+2",
+    "bootstrap-sass-official": "v3.2.0+2",
     "ember-data-django-rest-adapter": "~1.0.6",
     "jquery-mockjax": "~1.6.0"
   }
