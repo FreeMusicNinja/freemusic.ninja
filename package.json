@@ -37,6 +37,7 @@
     "ember-cli-django-rest-auth": "~0.3.0",
     "broccoli-sass": "~0.2.3",
     "broccoli-static-compiler": "~0.2.1",
-    "broccoli-merge-trees": "~0.2.0"
+    "broccoli-merge-trees": "~0.2.0",
+    "shelljs": "~0.3.0"
   }
 }
