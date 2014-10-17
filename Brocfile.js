@@ -20,13 +20,16 @@ var extraAssets = [];
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import('bower_components/bootstrap/dist/css/bootstrap.css');
-app.import('bower_components/bootstrap/dist/js/bootstrap.js');
-extraAssets.push(pickFiles('bower_components/bootstrap/dist', {
-  srcDir: '/fonts',
-  destDir: '/fonts',
-}));
+// Bootstrap
+app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');
 
+// Glyphicons
+extraAssets.push(pickFiles('bower_components/bootstrap-sass-official/assets', {
+     srcDir: '/fonts',
+     destDir: '/fonts'
+ }));
+
+// Django REST adapter
 app.import('bower_components/ember-data-django-rest-adapter/build/ember-data-django-rest-adapter.js');
 
 if (app.env === 'test') {
