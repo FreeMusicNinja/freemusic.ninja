@@ -1,6 +1,5 @@
 # Free Music Ninja website
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/FreeMusicNinja/freemusic.ninja?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Circle CI](https://circleci.com/gh/FreeMusicNinja/freemusic.ninja.png?style=badge)](https://circleci.com/gh/FreeMusicNinja/freemusic.ninja)
 
 This README outlines the details of collaborating on this Ember application.
