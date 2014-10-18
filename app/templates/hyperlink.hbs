@@ -1,0 +1,7 @@
+  <div class="form-group">
+    <label {{bind-attr for='_view.elementId'}}>URL</label>
+    <div class="input-group">
+      {{input value=link.url class='form-control' id=_view.elementId}}
+      {{link-dropdown value=link.name options=_view.linkOptions}}
+  </div>
+

@@ -1,0 +1,9 @@
+<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+{{selectedOption.display_name}}
+  <span class="caret"></span>
+</button>
+<ul class="dropdown-menu" role="menu">
+  {{#each options}}
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" {{action 'select' this}}>{{display_name}}</a></li>
+  {{/each}}
+</ul>
