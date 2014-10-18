@@ -56,11 +56,7 @@ The following environment variables are required to deploy this website to Amazo
 * AWS_KEY
 * AWS_SECRET
 
-To build the website:
-
-* `ember build --environment production`
-
-To deploy the website to S3:
+To build and deploy the website to S3:
 
 * `grunt`
 

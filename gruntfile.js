@@ -1,5 +1,6 @@
 /* jshint node: true */
 // Based on http://www.octolabs.com/blogs/octoblog/2014/05/24/deploying-ember-cli-to-amazon-s3-with-grunt/
+var shell = require('shelljs');
 
 module.exports = function(grunt) {
 
@@ -44,6 +45,17 @@ module.exports = function(grunt) {
               Expires: new Date(Date.now() + 63072000000),
             },
           },
+          {
+            expand: true,
+            cwd: 'compressed/fonts/',
+            src: ['**'],
+            dest: 'fonts/',
+            params: {
+              // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
+              CacheControl: "max-age=630720000, public",
+              Expires: new Date(Date.now() + 63072000000),
+            },
+          },
         ],
 
       },
@@ -82,7 +94,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-hashres');
   grunt.loadNpmTasks('grunt-contrib-compress');
 
+  grunt.registerTask('build', "build production assets", function() {
+    shell.exec('rm -rf compressed/ && ember build --environment=production');
+  });
+
   // Default task(s).
-  grunt.registerTask('default', ['hashres', 'compress', 'aws_s3']);
+  grunt.registerTask('default', ['build', 'hashres', 'compress', 'aws_s3']);
 
 };
