@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     needs: ['auth'],
-    userNameBinding: 'controllers.auth.content.name',
+    userBinding: 'controllers.auth.content',
     isLoggedIn: function() {
-      return !Ember.isEmpty(this.get('userName'));
-    }.property('userName'),
+      return !Ember.isEmpty(this.get('user.name'));
+    }.property('user.name'),
 });
