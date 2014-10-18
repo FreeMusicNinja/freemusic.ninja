@@ -29,9 +29,6 @@ extraAssets.push(pickFiles('bower_components/bootstrap-sass-official/assets', {
      destDir: '/fonts'
  }));
 
-// Django REST adapter
-app.import('bower_components/ember-data-django-rest-adapter/build/ember-data-django-rest-adapter.js');
-
 if (app.env === 'test') {
   app.import('bower_components/jquery-mockjax/jquery.mockjax.js');
 }

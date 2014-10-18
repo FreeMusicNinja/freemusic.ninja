@@ -35,6 +35,7 @@
     "grunt-contrib-compress": "~0.11.0",
     "ember-cli-simple-auth": "~0.6.7",
     "ember-cli-django-rest-auth": "~0.3.0",
+    "ember-django-adapter": "~0.4.0",
     "broccoli-sass": "~0.2.3",
     "broccoli-static-compiler": "~0.2.1",
     "broccoli-merge-trees": "~0.2.0",
