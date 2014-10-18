@@ -30,7 +30,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{#if isLoggedIn}}
-          <li class="navbar-text">Welcome, {{userName}}</li>
+          <li>{{#link-to 'user' user}}Welcome, {{user.name}}{{/link-to}}</li>
           <li><a href="" {{ action 'invalidateSession' }}>Logout</a></li>
         {{else}}
           {{#link-li}}
