@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   trey: {
-    musicMoney: 537,
+    musicMoney: 547,
     hostingMoney: 38,
-    hours: 240,
+    hours: 200 + 79, // Estimated 200 hours spent before I started keeping track
   },
 });
