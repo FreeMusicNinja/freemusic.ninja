@@ -6,4 +6,7 @@ export default Ember.Controller.extend({
     hostingMoney: 38,
     hours: 200 + 79, // Estimated 200 hours spent before I started keeping track
   },
+  micah: {
+    hours: 7,
+  }
 });
