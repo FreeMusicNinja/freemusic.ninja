@@ -12,21 +12,38 @@
 
 <h2>Volunteers</h2>
 
-<div class="media">
-  <a class="pull-left" href="http://treyhunner.com">
-    <img class="media-object" src="https://secure.gravatar.com/avatar/945d10168a7817c64276c164a57fa8de?s=176">
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading"><a href="http://treyhunner.com">Trey Hunner</a></h3>
+<ul>
+  <li class="media">
+    <a class="pull-left" href="http://treyhunner.com">
+      <img class="media-object" src="https://secure.gravatar.com/avatar/945d10168a7817c64276c164a57fa8de?s=176">
+    </a>
+    <div class="media-body">
+      <h3 class="media-heading"><a href="http://treyhunner.com">Trey Hunner</a></h3>
 
-    <p>Trey is a web developer, open source advocate, volunteer teacher, and music fan.  Trey has been interested in Creative Commons licenses since 2004.  He accepts donations via Bitcoin at <a href="https://blockchain.info/address/16CSbbHmcTBFZmgGLrrfznqKGb84qj4LAY">16CSbbHmcTBFZmgGLrrfznqKGb84qj4LAY</a>.</p>
-    <p>Currently Trey has spent approximately:</p>
+      <p>Trey is a web developer, open source advocate, volunteer teacher, and music fan.  Trey has been interested in Creative Commons licenses since 2004.  He accepts donations via Bitcoin at <a href="https://blockchain.info/address/16CSbbHmcTBFZmgGLrrfznqKGb84qj4LAY">16CSbbHmcTBFZmgGLrrfznqKGb84qj4LAY</a>.</p>
+      <p>Currently Trey has spent approximately:</p>
 
-    <ul>
-      <li>240 hours on researching, designing, and developing Free Music Ninja</li>
-      <li>$38 on hosting and domains for Free Music Ninja</li>
-      <li>$537 on Creative Commons music</li>
-    </ul>
+      <ul>
+        <li>{{ trey.hours }} hours on researching, designing, and developing Free Music Ninja</li>
+        <li>${{ trey.hostingMoney }} on hosting and domains for Free Music Ninja</li>
+        <li>${{ trey.musicMoney }} on Creative Commons music</li>
+      </ul>
 
-  </div><!-- /.media-body -->
-</div><!-- /.media -->
+    </div><!-- /.media-body -->
+  </li><!-- /.media -->
+  <li class="media">
+    <a class="pull-left" href="http://micah.bigprob.net/">
+      <img class="media-object" src="https://secure.gravatar.com/avatar/eb59b178eaed24f45ae1946169d368fa?s=176">
+    </a>
+    <div class="media-body">
+      <h3 class="media-heading"><a href="http://micah.bigprob.net/">Micah Denbraver</a></h3>
+      <p>Micah is an open source enthusiast and Python web application developer.</p>
+
+      <p>Currently Micah has spent:</p>
+
+      <ul>
+        <li>{{ micah.hours }} hours developing Free Music Ninja</li>
+      </ul>
+    </div><!-- /.media-body -->
+  </li><!-- /.media -->
+</ul>
