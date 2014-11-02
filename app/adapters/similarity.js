@@ -1,15 +1,7 @@
-import DS from 'ember-data';
+import ApplicationAdapter from './application';
 
-
-export default DS.RESTAdapter.extend({
-  createRecord: function(store, type, record) {
-    var data = {};
-    var serializer = store.serializerFor(type.typeKey);
-
-    serializer.serializeIntoHash(data, type, record, { includeId: true });
-
-    var artistId = record.get('artist.id');
-    var url = this.buildURL(type.typeKey, artistId) + '/similar';
-    return this.ajax(url, 'POST', { data: data });
+export default ApplicationAdapter.extend({
+  pathForType: function() {
+    return 'similar';
   }
 });
