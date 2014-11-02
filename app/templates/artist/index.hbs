@@ -1,0 +1,10 @@
+<div class="page-header">
+  <h1>{{name}}</h1>
+</div>
+
+<h2>Links</h2>
+<ul>
+  {{#each links}}
+    <li><a {{bind-attr href=url}}>{{display_name}}</a></li>
+  {{/each}}
+</ul>
