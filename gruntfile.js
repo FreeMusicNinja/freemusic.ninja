@@ -36,6 +36,17 @@ module.exports = function(grunt) {
           },
           {
             expand: true,
+            cwd: 'compressed/',
+            src: ['*'],
+            dest: '',
+            params: {
+              // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
+              CacheControl: "max-age=630720000, public",
+              Expires: new Date(Date.now() + 63072000000),
+            },
+          },
+          {
+            expand: true,
             cwd: 'compressed/assets/',
             src: ['**'],
             dest: 'assets/',
