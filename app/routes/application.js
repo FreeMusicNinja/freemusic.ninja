@@ -13,7 +13,12 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     sessionAuthenticationSucceeded: function() {
       var authController = this.controllerFor('auth');
       authController.set('content', this.store.find('user', 'me'));
-      this.transitionTo('index');
+      var attemptedTransition = this.session.get('attemptedTransition');
+      if (attemptedTransition) {
+        attemptedTransition.retry();
+      } else {
+        this.transitionTo('index');
+      }
     },
   }
 });
