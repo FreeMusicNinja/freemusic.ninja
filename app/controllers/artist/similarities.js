@@ -11,6 +11,8 @@ export default Ember.ArrayController.extend({
       if (!hasBlankModel) {
         var similarity = this.store.createRecord('similarity', {
           cc_artist: this.get('artist'),
+          other_artist: '',
+          weight: 1,
         });
         this.get('content').pushObject(similarity);
       }
