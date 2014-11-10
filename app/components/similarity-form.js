@@ -27,4 +27,10 @@ export default Ember.Component.extend({
     Ember.run.debounce(this, this.autoSave, 1000);
   }.observes('other_artist', 'weight'),
 
+  actions: {
+    onChange: function () {
+      this.sendAction('edit');
+    },
+  },
+
 });
