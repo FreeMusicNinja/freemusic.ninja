@@ -5,8 +5,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function () {
     return this.store.find('similarity', {artist: this.modelFor('artist').id});
   },
-  setupController: function (controller, model) {
+  setupController: function (controller, content) {
     controller.set('artist', this.modelFor('artist'));
-    controller.set('model', model);
+    controller.set('content', content);
+    controller.send('onEdit');
   },
 });
