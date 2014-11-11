@@ -2,9 +2,16 @@
   <h1>{{name}}</h1>
 </div>
 
-<h2>Links</h2>
+<h3>Links</h3>
 <ul>
   {{#each links}}
     <li><a {{bind-attr href=url}}>{{display_name}}</a></li>
+  {{/each}}
+</ul>
+
+<h3>My Similarity Ratings <small>{{#link-to 'artist.similarities'}}Edit{{/link-to}}</small></h3>
+<ul>
+  {{#each similarities}}
+  <li><strong>{{weight}}</strong>: {{other_artist}}</li>
   {{/each}}
 </ul>
