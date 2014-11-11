@@ -1,8 +1,21 @@
 <div class="page-header">
-  <h1>{{name}}</h1>
+  <h1>{{artist.name}}</h1>
 </div>
 
-<h2>Similar Artists</h2>
+<p class="lead">Please list all artists you think are similar to {{artist.name}}.</p>
+
+<p>Please rate artists based on this scale:</p>
+
+<ul>
+  <li><strong>0:</strong> These artists are not similar at all</li>
+  <li><strong>1:</strong> These artists sound somewhat similar</li>
+  <li><strong>2:</strong> One artist sometimes reminds you of the other</li>
+  <li><strong>3:</strong> Fans of one are likely to enjoy both</li>
+  <li><strong>4:</strong> These artists have uncanny similarities</li>
+  <li><strong>5:</strong> This is a different name for the same artist</li>
+</ul>
+
+<h3>Similar Artists</h3>
 
 {{#each model}}
   {{similarity-form content=this edit='onEdit'}}
