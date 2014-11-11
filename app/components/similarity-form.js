@@ -3,6 +3,11 @@ import BufferedProxy from 'ember-buffered-proxy/proxy';
 
 export default Ember.Component.extend({
 
+  classNames: ['edit-similarity'],
+  isNewBinding: 'content.isNew',
+  isSavingBinding: 'content.isSaving',
+  classNameBindings: ['isNew', 'isSaving'],
+
   model: function () {
     return BufferedProxy.create({content: this.get('content')});
   }.property('content'),
@@ -30,6 +35,11 @@ export default Ember.Component.extend({
   actions: {
     onChange: function () {
       this.sendAction('edit');
+    },
+    delete: function () {
+      if (!this.get('content.isNew') && !this.get('content.isSaving')) {
+        this.get('content').destroyRecord();
+      }
     },
   },
 

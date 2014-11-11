@@ -9,5 +9,7 @@
     {{view Ember.Select content=model.weights value=weight class='form-control'}}
     </div>
   </div>
+  <button type="button" class="delete btn btn-danger" {{action 'delete'}}><i class="glyphicon glyphicon-trash"></i></button>
+  <span class="loading glyphicon glyphicon-refresh spin"></span>
 </form>
 

@@ -17,3 +17,13 @@ body {
   from { transform: rotate(0deg);}
   to { transform: rotate(360deg);}
 }
+
+.edit-similarity {
+  .loading { display: none; }
+  &.is-saving {
+    .loading { display: inline; }
+  }
+  &.is-new, &.is-saving {
+    .delete { display: none; }
+  }
+}
