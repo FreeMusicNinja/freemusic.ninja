@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import { test } from 'ember-qunit';
 import startApp from '../helpers/start-app';
 var App;
 
-module("Artist recommendation tests", {
+module('Acceptance: Artist recommendation tests', {
   setup: function() {
     App = startApp();
   },
@@ -13,7 +12,7 @@ module("Artist recommendation tests", {
   }
 });
 
-test("no similar artists", function() {
+test('no similar artists', function() {
   expect(1);
   $.mockjax({
     url: 'http://api/artists/',
@@ -25,7 +24,7 @@ test("no similar artists", function() {
   });
 });
 
-test("similar artists via URL", function() {
+test('similar artists via URL', function() {
   expect(1);
   $.mockjax({
     url: 'http://api/artists/',
