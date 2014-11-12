@@ -35,7 +35,9 @@ test('similar artists via URL', function() {
       links: [],
     }],
     onAfterComplete: function () {
-      equal(find('.panel').text().trim(), 'Jonathan Coulton', "Artist results not found.");
+      find('.sr-only').remove();
+      var artistName = find('.panel-heading').text().trim();
+      equal(artistName, 'Jonathan Coulton', "Artist results not found.");
     },
   });
   visit('/artists?name=Weird+Al+Yankovic');
