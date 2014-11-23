@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function () {
-    return this.store.find('similarity', {artist: this.modelFor('artist').id});
+    return this.store.find('similarity', {cc_artist: this.modelFor('artist').id});
   },
   setupController: function (controller, content) {
     controller.set('artist', this.modelFor('artist'));
