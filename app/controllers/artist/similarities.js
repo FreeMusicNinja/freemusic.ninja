@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import BufferedProxy from 'ember-buffered-proxy/proxy';
 
 export default Ember.ArrayController.extend({
 
@@ -8,7 +9,9 @@ export default Ember.ArrayController.extend({
       other_artist: '',
       weight: 1,
     });
-    this.get('content').pushObject(similarity);
+    this.get('content').pushObject(BufferedProxy.create({
+      content: similarity,
+    }));
   },
 
   actions: {
@@ -19,6 +22,9 @@ export default Ember.ArrayController.extend({
       if (!hasBlankModel) {
         this.addBlankModel();
       }
+    },
+    onDelete: function (object) {
+      this.get('content').removeObject(object);
     },
   },
 

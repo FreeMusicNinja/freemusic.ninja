@@ -1,34 +1,33 @@
 import Ember from 'ember';
-import BufferedProxy from 'ember-buffered-proxy/proxy';
 
 export default Ember.Component.extend({
 
   classNames: ['edit-similarity'],
-  isNewBinding: 'content.isNew',
-  isSavingBinding: 'content.isSaving',
+  isNewBinding: 'model.isNew',
+  isSavingBinding: 'model.isSaving',
   classNameBindings: ['isNew', 'isSaving'],
 
   model: function () {
-    return BufferedProxy.create({content: this.get('content')});
+    return this.get('content.content');
   }.property('content'),
 
   other_artist: function () {
-    return this.get('model.other_artist');
+    return this.get('content.other_artist');
   }.property(),
   weight: function () {
-    return this.get('model.weight');
+    return this.get('content.weight');
   }.property(),
 
   autoSave: function () {
-    if (this.get('model.hasBufferedChanges') && !this.get('content.isSaving')) {
-      this.get('model').applyBufferedChanges();
-      this.get('content').save();
+    if (this.get('content.hasBufferedChanges') && !this.get('model.isSaving')) {
+      this.get('content').applyBufferedChanges();
+      this.get('model').save();
     }
   },
 
   debouncedSave: function () {
-    this.set('model.other_artist', this.get('other_artist'));
-    this.set('model.weight', this.get('weight'));
+    this.set('content.other_artist', this.get('other_artist'));
+    this.set('content.weight', this.get('weight'));
     Ember.run.debounce(this, this.autoSave, 1000);
   }.observes('other_artist', 'weight'),
 
@@ -37,8 +36,9 @@ export default Ember.Component.extend({
       this.sendAction('edit');
     },
     delete: function () {
-      if (!this.get('content.isNew') && !this.get('content.isSaving')) {
-        this.get('content').destroyRecord();
+      if (!this.get('model.isNew') && !this.get('model.isSaving')) {
+        this.sendAction('delete', this.get('content'));
+        this.get('model').destroyRecord();
       }
     },
   },
