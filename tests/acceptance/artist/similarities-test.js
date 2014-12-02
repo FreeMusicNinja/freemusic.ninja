@@ -24,16 +24,6 @@ module('Acceptance: ArtistSimilarities', {
         links: [],
       },
     });
-    Ember.$.mockjax({
-      url: 'http://api/similar/',
-      contentType: 'application/json',
-      responseText: [{
-        id: 1,
-        other_artist: "Jonathan Coulton",
-        cc_artist: 1,
-        weight: 3.0,
-      }],
-    });
   },
   teardown: function() {
     invalidateSession();
@@ -44,6 +34,11 @@ module('Acceptance: ArtistSimilarities', {
 
 test('viewing similarities while authenticated', function() {
   expect(2);
+  Ember.$.mockjax({
+    url: 'http://api/similar/',
+    contentType: 'application/json',
+    responseText: [],
+  });
   authenticateSession();
   visit('/artists/1/similarities');
 
@@ -60,5 +55,44 @@ test('viewing similarities while unauthenticated', function() {
 
   andThen(function() {
     equal(currentPath(), 'login');
+  });
+});
+
+test('updating similarity', function() {
+  expect(7);
+  Ember.$.mockjax({
+    url: 'http://api/similar/',
+    type: 'GET',
+    contentType: 'application/json',
+    responseText: [{
+      id: 1,
+      other_artist: "They Might Be Giants",
+      cc_artist: 1,
+      weight: 3.0,
+    }],
+    onAfterComplete: function () {
+      ok('Similarities listed');
+    }
+  });
+  Ember.$.mockjax({
+    url: 'http://api/similar/1/',
+    type: 'PUT',
+    contentType: 'application/json',
+    onAfterComplete: function () {
+      ok('Similarity updated');
+    }
+  });
+  authenticateSession();
+  visit('/artists/1/similarities');
+
+  andThen(function() {
+    equal(currentPath(), 'artist.similarities');
+    var similarities = find('.edit-similarity');
+    var artistFields = similarities.find('input[type=text]');
+    equal(similarities.length, 2);
+    equal(artistFields[0].value, "They Might Be Giants");
+    equal(artistFields[1].value, "");
+    fillIn('.edit-similarity:first input[type=text]', "New Name");
+    equal(artistFields.first().val(), "New Name");
   });
 });
