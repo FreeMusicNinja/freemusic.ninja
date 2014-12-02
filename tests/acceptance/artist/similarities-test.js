@@ -59,7 +59,7 @@ test('viewing similarities while unauthenticated', function() {
 });
 
 test('updating similarity', function() {
-  expect(7);
+  expect(6);
   Ember.$.mockjax({
     url: 'http://api/similar/',
     type: 'GET',
@@ -86,13 +86,46 @@ test('updating similarity', function() {
   visit('/artists/1/similarities');
 
   andThen(function() {
-    equal(currentPath(), 'artist.similarities');
-    var similarities = find('.edit-similarity');
-    var artistFields = similarities.find('input[type=text]');
-    equal(similarities.length, 2);
+    var artistFields = find('.edit-similarity input[type=text]');
+    equal(artistFields.length, 2);
     equal(artistFields[0].value, "They Might Be Giants");
     equal(artistFields[1].value, "");
     fillIn('.edit-similarity:first input[type=text]', "New Name");
     equal(artistFields.first().val(), "New Name");
+  });
+});
+
+test('adding new similarity', function() {
+  expect(7);
+  Ember.$.mockjax({
+    url: 'http://api/similar/',
+    type: 'GET',
+    contentType: 'application/json',
+    responseText: [],
+    onAfterComplete: function () {
+      ok(true, 'Similarities listed');
+    }
+  });
+  Ember.$.mockjax({
+    url: 'http://api/similar/',
+    type: 'POST',
+    contentType: 'application/json',
+    onAfterComplete: function () {
+      ok(true, 'Similarity created');
+    }
+  });
+  authenticateSession();
+  visit('/artists/1/similarities');
+
+  andThen(function() {
+    var artistFields = find('.edit-similarity input[type=text]');
+    equal(artistFields.length, 1, 'Single similarity');
+    equal(artistFields[0].value, "", 'Blank Similarity');
+    fillIn('.edit-similarity:first input[type=text]', "They Might Be Giants");
+    artistFields.first().keypress();
+    artistFields = find('.edit-similarity input[type=text]');
+    equal(artistFields.length, 2);
+    equal(artistFields[0].value, "They Might Be Giants");
+    equal(artistFields[1].value, "", 'Blank Similarity');
   });
 });
