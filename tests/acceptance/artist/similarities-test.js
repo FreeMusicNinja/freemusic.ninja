@@ -36,6 +36,7 @@ module('Acceptance: ArtistSimilarities', {
     });
   },
   teardown: function() {
+    invalidateSession();
     Ember.run(App, 'destroy');
     Ember.$.mockjax.clear();
   }
@@ -50,5 +51,14 @@ test('viewing similarities while authenticated', function() {
     equal(currentPath(), 'artist.similarities');
     var lead = find('.lead').text().trim();
     equal(lead, 'Please list all artists you think are similar to Jonathan Coulton.', "Artist similarities not found");
+  });
+});
+
+test('viewing similarities while unauthenticated', function() {
+  expect(1);
+  visit('/artists/1/similarities');
+
+  andThen(function() {
+    equal(currentPath(), 'login');
   });
 });

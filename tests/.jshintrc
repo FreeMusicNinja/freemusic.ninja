@@ -46,7 +46,8 @@
     "currentURL",
     "currentPath",
     "currentRouteName",
-    "authenticateSession"
+    "authenticateSession",
+    "invalidateSession"
   ],
   "node": false,
   "browser": false,
