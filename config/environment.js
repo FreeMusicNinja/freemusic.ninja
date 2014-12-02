@@ -16,6 +16,7 @@ module.exports = function(environment) {
 
     APP: {
       API_NAMESPACE: '',
+      debounceMilliseconds: 1000,
     }
   };
 
@@ -39,6 +40,8 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.API_HOST = 'http://api';
+
+    ENV.APP.debounceMilliseconds = 10;
   }
 
   if (environment === 'production') {

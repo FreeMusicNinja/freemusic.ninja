@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import { test } from 'ember-qunit';
 import startApp from '../helpers/start-app';
 var App;
 
-module("Artist recommendation tests", {
+module('Acceptance: Artist recommendation tests', {
   setup: function() {
     App = startApp();
   },
@@ -13,7 +12,7 @@ module("Artist recommendation tests", {
   }
 });
 
-test("no similar artists", function() {
+test('no similar artists', function() {
   expect(1);
   $.mockjax({
     url: 'http://api/artists/',
@@ -25,7 +24,7 @@ test("no similar artists", function() {
   });
 });
 
-test("similar artists via URL", function() {
+test('similar artists via URL', function() {
   expect(1);
   $.mockjax({
     url: 'http://api/artists/',
@@ -36,7 +35,9 @@ test("similar artists via URL", function() {
       links: [],
     }],
     onAfterComplete: function () {
-      equal(find('.panel').text().trim(), 'Jonathan Coulton', "Artist results not found.");
+      find('.sr-only').remove();
+      var artistName = find('.panel-heading').text().trim();
+      equal(artistName, 'Jonathan Coulton', "Artist results not found.");
     },
   });
   visit('/artists?name=Weird+Al+Yankovic');

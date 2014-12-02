@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import { test } from 'ember-qunit';
 import startApp from '../helpers/start-app';
 var App;
 
-module('Login tests', {
+module('Acceptance: Login tests', {
   setup: function() {
     App = startApp();
   },
@@ -13,7 +12,7 @@ module('Login tests', {
   }
 });
 
-test("user gives good credentials and receives welcome message", function() {
+test('user gives good credentials and receives welcome message', function() {
   expect(2);
   $.mockjax({
     url: "http://api/api-token-auth/",
@@ -40,7 +39,7 @@ test("user gives good credentials and receives welcome message", function() {
   });
 });
 
-test("user gives bad credentials and receives error", function() {
+test('user gives bad credentials and receives error', function() {
   expect(1);
   $.mockjax({
     url: "http://api/api-token-auth/",
