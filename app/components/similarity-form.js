@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Component.extend({
 
@@ -28,7 +29,7 @@ export default Ember.Component.extend({
   debouncedSave: function () {
     this.set('content.other_artist', this.get('other_artist'));
     this.set('content.weight', this.get('weight'));
-    Ember.run.debounce(this, this.autoSave, 1000);
+    Ember.run.debounce(this, this.autoSave, config.APP.debounceMilliseconds);
   }.observes('other_artist', 'weight'),
 
   actions: {
