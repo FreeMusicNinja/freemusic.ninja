@@ -1,5 +1,4 @@
 @import 'bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap';
-@import 'mixins';
 
 /* Move content down because of navbar */
 body {
@@ -10,10 +9,10 @@ body {
 .spacer  { margin-bottom: 1em; }
 
 .spin {
-  @include animation(spin .8s infinite linear);
+  animation: spin .8s infinite linear;
 }
 
-@include keyframes(spin) {
+@keyframes spin {
   from { transform: rotate(0deg);}
   to { transform: rotate(360deg);}
 }
