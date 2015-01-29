@@ -29,9 +29,5 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-[*.md]
-trim_trailing_whitespace = false
-
-# Added for git diff files in vim
-[*.diff]
+[*.{diff,md}]
 trim_trailing_whitespace = false

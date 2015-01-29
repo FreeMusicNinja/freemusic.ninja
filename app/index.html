@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
 
-    {{BASE_TAG}}
+    {{content-for 'head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/freemusicninja.css">
+
+    {{content-for 'head-footer'}}
   </head>
   <body>
-    <script>
-      window.EmberENV = {{EMBER_ENV}};
-    </script>
+    {{content-for 'body'}}
+
     <script src="assets/vendor.js"></script>
     <script src="assets/freemusicninja.js"></script>
-    <script>
-      window.Freemusicninja = require('freemusicninja/app')['default'].create({{APP_CONFIG}});
-    </script>
+
+    {{content-for 'body-footer'}}
   </body>
 </html>
