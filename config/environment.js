@@ -16,6 +16,7 @@ module.exports = function(environment) {
 
     APP: {
       API_NAMESPACE: '',
+      API_CLIENT_ID: process.env.API_CLIENT_ID,
     }
   };
 
@@ -46,7 +47,12 @@ module.exports = function(environment) {
   }
 
   ENV['simple-auth-oauth2'] = {
-    serverTokenEndpoint: ENV.APP.API_HOST + '/oauth2/token/',
+    serverTokenEndpoint: ENV.APP.API_HOST + '/oauth2/token/?client_id=' + encodeURIComponent(ENV.APP.API_CLIENT_ID),
+  };
+
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:oauth2-bearer',
+    crossOriginWhitelist: [ENV.APP.API_HOST],
   };
 
   return ENV;
