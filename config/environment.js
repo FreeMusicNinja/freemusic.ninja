@@ -16,7 +16,7 @@ module.exports = function(environment) {
 
     APP: {
       API_NAMESPACE: '',
-      API_CLIENT_ID: process.env.API_CLIENT_ID,
+      API_CLIENT_ID: process.env.API_CLIENT_ID || 'web',
     }
   };
 
