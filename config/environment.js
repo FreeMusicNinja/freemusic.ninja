@@ -40,6 +40,7 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.API_HOST = 'http://api';
+    ENV.APP.API_CLIENT_ID = 'client_id';
   }
 
   if (environment === 'production') {
