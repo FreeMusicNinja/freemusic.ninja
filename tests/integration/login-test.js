@@ -16,9 +16,9 @@ module('Login tests', {
 test("user gives good credentials and receives welcome message", function() {
   expect(2);
   $.mockjax({
-    url: "http://api/api-token-auth/",
+    url: "http://api/oauth2/token/?client_id=client_id",
     contentType: "application/json",
-    responseText: {token: "TOKEN"},
+    responseText: {"access_token": "ACCESS", "scope": "read write", "expires_in": 36000, "refresh_token": "REFRESH", "token_type": "Bearer"},
     onAfterComplete: function () {
       ok(true);
     },
@@ -43,10 +43,10 @@ test("user gives good credentials and receives welcome message", function() {
 test("user gives bad credentials and receives error", function() {
   expect(1);
   $.mockjax({
-    url: "http://api/api-token-auth/",
+    url: "http://api/oauth2/token/?client_id=client_id",
     status: 400,
     contentType: "application/json",
-    responseText: {"non_field_errors": ["Unable to login with provided credentials."]},
+    responseText: {"error": "invalid_grant", "error_description": "Invalid credentials given."},
   });
 
   visit('/login').then(function() {

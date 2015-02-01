@@ -16,6 +16,7 @@ module.exports = function(environment) {
 
     APP: {
       API_NAMESPACE: '',
+      API_CLIENT_ID: process.env.API_CLIENT_ID || 'web',
     }
   };
 
@@ -39,15 +40,19 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.API_HOST = 'http://api';
+    ENV.APP.API_CLIENT_ID = 'client_id';
   }
 
   if (environment === 'production') {
     ENV.APP.API_HOST = 'http://api.freemusic.ninja';
   }
 
+  ENV['simple-auth-oauth2'] = {
+    serverTokenEndpoint: ENV.APP.API_HOST + '/oauth2/token/?client_id=' + encodeURIComponent(ENV.APP.API_CLIENT_ID),
+  };
+
   ENV['simple-auth'] = {
-    authorizer: 'authorizer:django-rest',
-    serverTokenEndpoint: ENV.APP.API_HOST + '/api-token-auth/',
+    authorizer: 'simple-auth-authorizer:oauth2-bearer',
     crossOriginWhitelist: [ENV.APP.API_HOST],
   };
 
