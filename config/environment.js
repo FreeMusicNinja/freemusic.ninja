@@ -49,7 +49,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.API_HOST = 'http://api.freemusic.ninja';
+    ENV.APP.API_HOST = 'https://api.freemusic.ninja';
   }
 
   ENV['simple-auth-oauth2'] = {
