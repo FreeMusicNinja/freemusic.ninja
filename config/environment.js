@@ -16,7 +16,12 @@ module.exports = function(environment) {
     APP: {
       API_NAMESPACE: '',
       API_CLIENT_ID: process.env.API_CLIENT_ID || 'web',
-    }
+      API_HOST: '',
+    },
+
+    'simple-auth': {
+      authorizer: 'simple-auth-authorizer:oauth2-bearer',
+    },
   };
 
   if (environment === 'development') {
@@ -40,6 +45,7 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.API_HOST = 'http://api';
     ENV.APP.API_CLIENT_ID = 'client_id';
+    ENV['simple-auth'].store = 'simple-auth-session-store:ephemeral';
   }
 
   if (environment === 'production') {
@@ -50,9 +56,10 @@ module.exports = function(environment) {
     serverTokenEndpoint: ENV.APP.API_HOST + '/oauth2/token/?client_id=' + encodeURIComponent(ENV.APP.API_CLIENT_ID),
   };
 
-  ENV['simple-auth'] = {
-    authorizer: 'simple-auth-authorizer:oauth2-bearer',
-    crossOriginWhitelist: [ENV.APP.API_HOST],
+  ENV['simple-auth'].crossOriginWhitelist = [ENV.APP.API_HOST];
+
+  ENV.contentSecurityPolicy = {
+    'connect-src': "'self' data: " + ENV.APP.API_HOST.replace(/^https?:\/\//i, ''),
   };
 
   return ENV;
