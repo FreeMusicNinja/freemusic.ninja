@@ -1,26 +1,26 @@
 import Ember from 'ember';
-import { test } from 'ember-qunit';
+import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 var App;
 
 module('Login tests', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
   },
-  teardown: function() {
+  afterEach: function() {
     Ember.run(App, App.destroy);
     Ember.$.mockjax.clear();
   }
 });
 
-test("user gives good credentials and receives welcome message", function() {
-  expect(2);
+test("user gives good credentials and receives welcome message", function(assert) {
+  assert.expect(2);
   $.mockjax({
     url: "http://api/oauth2/token/?client_id=client_id",
     contentType: "application/json",
     responseText: {"access_token": "ACCESS", "scope": "read write", "expires_in": 36000, "refresh_token": "REFRESH", "token_type": "Bearer"},
     onAfterComplete: function () {
-      ok(true);
+      assert.ok(true);
     },
   });
   $.mockjax({
@@ -29,7 +29,7 @@ test("user gives good credentials and receives welcome message", function() {
     responseText: {id: 1, name: "Trey Hunner"},
     onAfterComplete: function () {
       var welcomeMessage = find('.navbar-right').text();
-      ok(welcomeMessage.indexOf("Welcome, Trey Hunner") > -1, "User name was not displayed");
+      assert.ok(welcomeMessage.indexOf("Welcome, Trey Hunner") > -1, "User name was not displayed");
     },
   });
 
