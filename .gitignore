@@ -9,4 +9,3 @@ coverage/*
 libpeerconnection.log
 npm-debug.log
 testem.log
-/config/deploy.js
