@@ -5,7 +5,7 @@ module.exports = {
     store: {
       type: "ssh",
       remoteDir: "/home/django/freemusic.ninja/dist/",
-      host: "api.freemusic.ninja",
+      host: "freemusic.ninja",
       username: "root",
       privateKeyFile: process.env.FMN_SSH_KEY_FILE,
     },
