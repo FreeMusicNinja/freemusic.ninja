@@ -11,8 +11,8 @@ deployment:
   master:
     branch: master
     commands:
-      - ember deploy:upload --environment production
-      - ember deploy:activate --revision "freemusicninja:$(git rev-parse --short HEAD)" --environment production
+      - ./node_modules/ember-cli/bin/ember deploy:upload --environment production
+      - ./node_modules/ember-cli/bin/ember deploy:activate --revision "freemusicninja:$(git rev-parse --short HEAD)" --environment production
 
 test:
   override:
