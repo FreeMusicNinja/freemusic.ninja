@@ -41,7 +41,7 @@
     "ember-data": "1.0.0-beta.15",
     "ember-deploy-s3": "0.0.3",
     "ember-deploy-s3-index": "git+https://github.com/Kerry350/ember-deploy-s3-index.git",
-    "ember-deploy-ssh-index": "0.0.0",
+    "ember-deploy-ssh-index": "0.0.1",
     "ember-django-adapter": "^0.5.2",
     "ember-export-application-global": "^1.0.2",
     "ember-watson": "^0.1.1",
