@@ -16,7 +16,7 @@ The following global Node packages are required for development:
 Install the global dependencies like this:
 
 ```bash
-$ sudo npm install -g bower ember-cli grunt-cli
+$ sudo npm install -g bower ember-cli
 ```
 
 
@@ -58,7 +58,11 @@ The following environment variables are required to deploy this website to Amazo
 
 To build and deploy the website to S3:
 
-* `grunt`
+```
+ember deploy -e production  # deploy assets
+ember deploy:list -e production  # list revisions
+ember deploy:activate --revision "freemusicninja:$(git rev-parse --short HEAD)" -e production  # activate assets for current revision
+```
 
 
 [bower]: http://bower.io/

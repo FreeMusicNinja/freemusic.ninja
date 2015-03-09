@@ -60,6 +60,7 @@ module.exports = function(environment) {
 
   ENV.contentSecurityPolicy = {
     'connect-src': "'self' data: " + ENV.APP.API_HOST.replace(/^https?:\/\//i, ''),
+    'font-src': "'self' data: s3a.amazonaws.com",
   };
 
   return ENV;
