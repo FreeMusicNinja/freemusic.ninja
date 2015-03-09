@@ -11,7 +11,7 @@ deployment:
   master:
     branch: master
     commands:
-      - ./node_modules/ember-cli/bin/ember deploy:upload --environment production
+      - ./node_modules/ember-cli/bin/ember deploy --environment production
       - ./node_modules/ember-cli/bin/ember deploy:activate --revision "freemusicninja:$(git rev-parse --short HEAD)" --environment production
 
 test:
