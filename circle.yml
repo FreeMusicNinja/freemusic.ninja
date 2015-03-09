@@ -7,6 +7,13 @@ dependencies:
     - npm install:
         timeout: 60
 
+deployment:
+  master:
+    branch: master
+    commands:
+      - ember deploy:upload --environment production
+      - ember deploy:activate --revision "freemusicninja:$(git rev-parse --short HEAD)" --environment production
+
 test:
   override:
     - ./node_modules/ember-cli/bin/ember test:
