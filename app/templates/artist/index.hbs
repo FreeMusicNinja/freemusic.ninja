@@ -4,7 +4,7 @@
 
 <h2>Links</h2>
 <ul>
-  {{#each links}}
-    <li><a {{bind-attr href=url}}>{{display_name}}</a></li>
+  {{#each links as |link|}}
+    <li><a {{bind-attr href=url}}>{{link.display_name}}</a></li>
   {{/each}}
 </ul>

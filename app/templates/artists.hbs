@@ -16,12 +16,12 @@
     </div>
   </div>
 
-  {{#each results}}
+  {{#each results as |artist|}}
     <div class="panel panel-default">
-      <div class="panel-heading">{{name}}</div>
+      <div class="panel-heading">{{artist.name}}</div>
       <div class="list-group">
-      {{#each links}}
-        <a {{bind-attr href=url}} class="list-group-item">{{display_name}}</a>
+      {{#each artist.links as |link|}}
+        <a {{bind-attr href=link.url}} class="list-group-item">{{link.display_name}}</a>
       {{/each}}
       </div>
     </div>
