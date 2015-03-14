@@ -25,19 +25,15 @@
       {{/each}}
       </div>
     </div>
-  {{else}}
-    {{#if loading}}
+  {{else if loading}}
     <div class="well">
       Loading...
     </div>
-    {{else}}
-      {{#if name}}
-        <div class="panel panel-default">
-          <div class="panel-body">
-            No artist found.
-          </div>
-        </div>
-      {{/if}}
-    {{/if}}
+  {{else if name}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        No artist found.
+      </div>
+    </div>
   {{/each}}
 </div>
